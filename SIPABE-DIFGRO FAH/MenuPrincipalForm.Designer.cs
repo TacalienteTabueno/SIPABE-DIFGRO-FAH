@@ -28,46 +28,58 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Btn_Logout = new System.Windows.Forms.Button();
-            this.BtnSalir = new System.Windows.Forms.Button();
+            this.TxtUsuarioActual = new System.Windows.Forms.TextBox();
+            this.BtnCapturaQR = new System.Windows.Forms.Button();
+            this.BtnConsultar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // Btn_Logout
+            // TxtUsuarioActual
             // 
-            this.Btn_Logout.Location = new System.Drawing.Point(575, 155);
-            this.Btn_Logout.Name = "Btn_Logout";
-            this.Btn_Logout.Size = new System.Drawing.Size(160, 70);
-            this.Btn_Logout.TabIndex = 0;
-            this.Btn_Logout.Text = "CERRAR SESION";
-            this.Btn_Logout.UseVisualStyleBackColor = true;
-            this.Btn_Logout.Click += new System.EventHandler(this.button1_Click);
+            this.TxtUsuarioActual.Location = new System.Drawing.Point(47, 31);
+            this.TxtUsuarioActual.Name = "TxtUsuarioActual";
+            this.TxtUsuarioActual.Size = new System.Drawing.Size(180, 20);
+            this.TxtUsuarioActual.TabIndex = 0;
             // 
-            // BtnSalir
+            // BtnCapturaQR
             // 
-            this.BtnSalir.Location = new System.Drawing.Point(575, 251);
-            this.BtnSalir.Name = "BtnSalir";
-            this.BtnSalir.Size = new System.Drawing.Size(160, 70);
-            this.BtnSalir.TabIndex = 1;
-            this.BtnSalir.Text = "SALIR DEL SISTEMA";
-            this.BtnSalir.UseVisualStyleBackColor = true;
+            this.BtnCapturaQR.Location = new System.Drawing.Point(407, 96);
+            this.BtnCapturaQR.Name = "BtnCapturaQR";
+            this.BtnCapturaQR.Size = new System.Drawing.Size(177, 40);
+            this.BtnCapturaQR.TabIndex = 1;
+            this.BtnCapturaQR.Text = "REGISTAR";
+            this.BtnCapturaQR.UseVisualStyleBackColor = true;
+            this.BtnCapturaQR.Click += new System.EventHandler(this.BtnCapturaQR_Click);
+            // 
+            // BtnConsultar
+            // 
+            this.BtnConsultar.Location = new System.Drawing.Point(403, 178);
+            this.BtnConsultar.Name = "BtnConsultar";
+            this.BtnConsultar.Size = new System.Drawing.Size(180, 35);
+            this.BtnConsultar.TabIndex = 2;
+            this.BtnConsultar.Text = "CONSULTAR";
+            this.BtnConsultar.UseVisualStyleBackColor = true;
+            this.BtnConsultar.Click += new System.EventHandler(this.BtnConsultar_Click);
             // 
             // MenuPrincipalForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.BtnSalir);
-            this.Controls.Add(this.Btn_Logout);
+            this.ClientSize = new System.Drawing.Size(690, 414);
+            this.Controls.Add(this.BtnConsultar);
+            this.Controls.Add(this.BtnCapturaQR);
+            this.Controls.Add(this.TxtUsuarioActual);
             this.Name = "MenuPrincipalForm";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.MenuPrincipalForm_Load);
+            this.Load += new System.EventHandler(this.MenuPrincipalForm_Load_1);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button Btn_Logout;
+        private System.Windows.Forms.Button BtnLogout;
         private System.Windows.Forms.Button BtnSalir;
+        private System.Windows.Forms.Button BtnConsultaPral;
+        private System.Windows.Forms.TextBox TxtUsuarioActual;
+        private System.Windows.Forms.Button BtnCapturaQR;
+        private System.Windows.Forms.Button BtnConsultar;
     }
 }

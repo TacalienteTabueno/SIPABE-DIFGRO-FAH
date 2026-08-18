@@ -109,6 +109,7 @@
     <Reference Include="System.IO.Pipelines, Version=10.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IO.Pipelines.10.0.3\lib\net462\System.IO.Pipelines.dll</HintPath>
     </Reference>
+    <Reference Include="System.Management" />
     <Reference Include="System.Memory, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.6.3\lib\net462\System.Memory.dll</HintPath>
     </Reference>
@@ -158,6 +159,20 @@
     <Compile Include="BeneficiarioForm.Designer.cs">
       <DependentUpon>BeneficiarioForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Auditor.cs" />
+    <Compile Include="Consultar1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultar1.Designer.cs">
+      <DependentUpon>Consultar1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registrar.Designer.cs">
+      <DependentUpon>Registrar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UtilidadesQR.cs" />
     <Compile Include="MenuPrincipalForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +190,9 @@
     <EmbeddedResource Include="BeneficiarioForm.resx">
       <DependentUpon>BeneficiarioForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Consultar1.resx">
+      <DependentUpon>Consultar1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -190,6 +208,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Registrar.resx">
+      <DependentUpon>Registrar.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

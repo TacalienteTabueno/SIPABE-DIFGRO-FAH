@@ -53,25 +53,25 @@ namespace SIPABE_DIFGRO_FAH
             builder.TrustServerCertificate = true;
             builder.ConnectTimeout = 10;
 
-            string conexionDePrueba = builder.ConnectionString;
+            string conexionsqlSipabe = builder.ConnectionString;
 
             // Intento de conexión
             try
             {
-                using (SqlConnection conexion = new SqlConnection(conexionDePrueba))
+                using (SqlConnection conexion = new SqlConnection(conexionsqlSipabe))
                 {
                     conexion.Open(); // Si las credenciales son malas (como ya saben quien), nos vamos al 'catch'
 
                     // Si salio chido seguimos con esto
-                    CadenaDeConexionGlobal = conexionDePrueba;
+                    CadenaDeConexionGlobal = conexionsqlSipabe;
                     UsuarioSQLActual = usuario; // Lo guardamos por si lo ocupamos en otros formularios
 
                     MessageBox.Show("¡Conexión exitosa!", "Bienvenido", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // CORRECCIÓN 2: Disparamos la auditoría silente antes de abrir el menú principal
+                    //Disparamos la auditoría silente, incognita, furtiva, oculta asi como quien dice tras bamabalinas antes de abrir el menú principal
                     RegistrarAuditoriaLogin(usuario);
 
-                    // Abrir el menu principal ocultar el login
+                    // Abrir el menu principal ocultar el login y en teoria ya no se va a usar el formulario que guarda el nombre del usuario
                     MenuPrincipalForm varMenuPrincipalForm = new MenuPrincipalForm();
                     varMenuPrincipalForm.Show();
                     this.Hide();
@@ -83,7 +83,7 @@ namespace SIPABE_DIFGRO_FAH
                 // asi que hay que revisar tambien esta parte y despues cambiarlo si es menester
                 if (ex.Number == 18456)
                 {
-                    MessageBox.Show("Usuario o contraseña incorrectos, porfa checa si escribiste bien, con calma y cuidado TKM.", "Error de Autenticación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Usuario o contraseña incorrectos, porfa checa si escribiste bien, con calma y cuidado TKM. Recuerda que tu no tienes enemigos, nadie tiene enemigos, nadie en este mundo merece ser herido", "Error de Autenticación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -112,6 +112,7 @@ namespace SIPABE_DIFGRO_FAH
             using (SqlConnection conn = new SqlConnection(CadenaDeConexionUsers))
             {
                 // Usamos parametros (@usa) que reemplazan la concatenacion para evitar Inyección SQL
+                // a la que le tiene miedo Haroluchis pero ya le dije que esta contemplado pero dice que no confia en mi
                 string query = "SELECT namae FROM Users WHERE usa = @usa";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -149,16 +150,36 @@ namespace SIPABE_DIFGRO_FAH
             // Cadena conexion auditora, hay que persinarse antes de iniciar para que funcione
             string strConnAudit = "Server=187.217.242.61;Database=AuditoLogins;User Id=hsrjeyj5yj5yjw5yjwrywjhu4y67224jw2j24yjqwr4yj;Password=jbjoLOJhoipsdhip534ergthjlgqebthqegth;Encrypt=True;TrustServerCertificate=True;";
 
+            // Instanciamos el auditor para obtener IP, MAC, UUID y BIOS Serial(Creo que ya estoy exagerando con mi paranoia)
+
+            AuditoriaSistema datosPC = new AuditoriaSistema();
+
             using (SqlConnection cnAudit = new SqlConnection(strConnAudit))
             {
-                string query = "INSERT INTO AuditoriaLogins (UsuarioSQL, Equipo, UsuarioWindows, FechaHora) VALUES (@UsuarioSQL, @Equipo, @UsuarioWindows, @FechaHora)";
+                // consulta nueva con los nuevos campos de hardware e identidad en la nueva base de auditoria
+                string query = @"INSERT INTO AuditoriaLogins3 
+                        (UsuarioSQL, Equipo, UsuarioWindows, FechaHora, IPLocal, MACAddress, UUID_Hardware, SerialBIOS, Procesador, MemoriaRAM) 
+                        VALUES 
+                        (@UsuarioSQL, @Equipo, @UsuarioWindows, @FechaHora, @IP, @MAC, @UUID, @BIOS, @Procesador, @RAM)";
 
                 using (SqlCommand cmd = new SqlCommand(query, cnAudit))
                 {
+                    // Datos que ya guardabamos en la auditoria
                     cmd.Parameters.AddWithValue("@UsuarioSQL", usuarioSQL);
-                    cmd.Parameters.AddWithValue("@Equipo", Environment.MachineName);
-                    cmd.Parameters.AddWithValue("@UsuarioWindows", Environment.UserName);
+                    cmd.Parameters.AddWithValue("@Equipo", datosPC.NombreEquipo);
+                    cmd.Parameters.AddWithValue("@UsuarioWindows", datosPC.UsuarioWindows);
                     cmd.Parameters.AddWithValue("@FechaHora", DateTime.Now);
+
+                    // Nuevos datos de hardware obtenidos por la clase AuditoriaSistema y con los que tengo que hacer cambios en la tabla de auditoria
+                    // y agregar los nuevos campos, tambien barajeo la posibilidad de una base nueva e importar registros (>'.')><('.'<)
+                    cmd.Parameters.AddWithValue("@IP", datosPC.IPLocal);
+                    cmd.Parameters.AddWithValue("@MAC", datosPC.DireccionMAC);
+                    cmd.Parameters.AddWithValue("@UUID", datosPC.UUID);
+                    cmd.Parameters.AddWithValue("@BIOS", datosPC.SerialHardware);
+
+                    // Nuevos datos que quiere Martinez aunque no creo que los usemos como el piensa
+                    cmd.Parameters.AddWithValue("@Procesador", datosPC.Procesador);
+                    cmd.Parameters.AddWithValue("@RAM", datosPC.MemoriaRAM);
 
                     try
                     {
@@ -167,11 +188,10 @@ namespace SIPABE_DIFGRO_FAH
                     }
                     catch (SqlException ex)
                     {
-
-
                         // Este mensaje para que al capturista le salte error si la auditoría falla, no se que tan bueno sea que se entere que registro
-                        // su compu y usuario d(OwO)b, lo de menos es despues comentarlo tehhe~
-                        MessageBox.Show("Error al registrar auditoría: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        // Lo de menos es comentarlo despues para que el proceso sea invisible para el usuario d(OwO)b
+
+                        MessageBox.Show("Error al registrar auditoría: " + ex.Message, "Error de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
