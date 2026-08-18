@@ -36,7 +36,7 @@
             // 
             // Btn_Login
             // 
-            this.Btn_Login.Location = new System.Drawing.Point(424, 126);
+            this.Btn_Login.Location = new System.Drawing.Point(257, 306);
             this.Btn_Login.Name = "Btn_Login";
             this.Btn_Login.Size = new System.Drawing.Size(280, 57);
             this.Btn_Login.TabIndex = 0;
@@ -46,23 +46,24 @@
             // 
             // Txt_User
             // 
-            this.Txt_User.Location = new System.Drawing.Point(137, 117);
+            this.Txt_User.Location = new System.Drawing.Point(287, 183);
+            this.Txt_User.MaxLength = 32770;
             this.Txt_User.Name = "Txt_User";
-            this.Txt_User.Size = new System.Drawing.Size(193, 20);
+            this.Txt_User.Size = new System.Drawing.Size(224, 20);
             this.Txt_User.TabIndex = 1;
             this.Txt_User.Leave += new System.EventHandler(this.Txt_User_Leave);
             // 
             // Txt_Pass
             // 
-            this.Txt_Pass.Location = new System.Drawing.Point(137, 190);
+            this.Txt_Pass.Location = new System.Drawing.Point(287, 243);
             this.Txt_Pass.Name = "Txt_Pass";
             this.Txt_Pass.PasswordChar = '*';
-            this.Txt_Pass.Size = new System.Drawing.Size(193, 20);
+            this.Txt_Pass.Size = new System.Drawing.Size(224, 20);
             this.Txt_Pass.TabIndex = 2;
             // 
             // TxtCapturistaNamae
             // 
-            this.TxtCapturistaNamae.Location = new System.Drawing.Point(313, 297);
+            this.TxtCapturistaNamae.Location = new System.Drawing.Point(325, 418);
             this.TxtCapturistaNamae.Name = "TxtCapturistaNamae";
             this.TxtCapturistaNamae.Size = new System.Drawing.Size(145, 20);
             this.TxtCapturistaNamae.TabIndex = 3;
