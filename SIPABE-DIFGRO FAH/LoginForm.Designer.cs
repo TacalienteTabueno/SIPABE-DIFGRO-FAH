@@ -1,4 +1,6 @@
-﻿namespace SIPABE_DIFGRO_FAH
+﻿using System;
+
+namespace SIPABE_DIFGRO_FAH
 {
     partial class LoginForm
     {
@@ -18,6 +20,11 @@
                 components.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
 
         #region Código generado por el Diseñador de Windows Forms
