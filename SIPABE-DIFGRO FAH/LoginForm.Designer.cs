@@ -36,29 +36,36 @@
             // 
             // Btn_Login
             // 
+            this.Btn_Login.BackColor = System.Drawing.Color.Goldenrod;
+            this.Btn_Login.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Login.ForeColor = System.Drawing.Color.Maroon;
             this.Btn_Login.Location = new System.Drawing.Point(257, 306);
             this.Btn_Login.Name = "Btn_Login";
             this.Btn_Login.Size = new System.Drawing.Size(280, 57);
             this.Btn_Login.TabIndex = 0;
             this.Btn_Login.Text = "Ingresar";
-            this.Btn_Login.UseVisualStyleBackColor = true;
+            this.Btn_Login.UseVisualStyleBackColor = false;
             this.Btn_Login.Click += new System.EventHandler(this.Btn_Login_Click);
             // 
             // Txt_User
             // 
+            this.Txt_User.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_User.ForeColor = System.Drawing.Color.Maroon;
             this.Txt_User.Location = new System.Drawing.Point(287, 183);
             this.Txt_User.MaxLength = 32770;
             this.Txt_User.Name = "Txt_User";
-            this.Txt_User.Size = new System.Drawing.Size(224, 20);
+            this.Txt_User.Size = new System.Drawing.Size(224, 29);
             this.Txt_User.TabIndex = 1;
             this.Txt_User.Leave += new System.EventHandler(this.Txt_User_Leave);
             // 
             // Txt_Pass
             // 
+            this.Txt_Pass.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_Pass.ForeColor = System.Drawing.Color.Maroon;
             this.Txt_Pass.Location = new System.Drawing.Point(287, 243);
             this.Txt_Pass.Name = "Txt_Pass";
             this.Txt_Pass.PasswordChar = '*';
-            this.Txt_Pass.Size = new System.Drawing.Size(224, 20);
+            this.Txt_Pass.Size = new System.Drawing.Size(224, 29);
             this.Txt_Pass.TabIndex = 2;
             // 
             // TxtCapturistaNamae
@@ -72,6 +79,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Maroon;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.TxtCapturistaNamae);
             this.Controls.Add(this.Txt_Pass);
