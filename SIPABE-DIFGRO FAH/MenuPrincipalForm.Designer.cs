@@ -32,11 +32,12 @@
             this.BtnConsultar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
+            this.btnConsultarBeneficiario = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BtnCapturaQR
             // 
-            this.BtnCapturaQR.Location = new System.Drawing.Point(273, 164);
+            this.BtnCapturaQR.Location = new System.Drawing.Point(438, 267);
             this.BtnCapturaQR.Name = "BtnCapturaQR";
             this.BtnCapturaQR.Size = new System.Drawing.Size(187, 97);
             this.BtnCapturaQR.TabIndex = 1;
@@ -46,7 +47,7 @@
             // 
             // BtnConsultar
             // 
-            this.BtnConsultar.Location = new System.Drawing.Point(89, 164);
+            this.BtnConsultar.Location = new System.Drawing.Point(438, 61);
             this.BtnConsultar.Name = "BtnConsultar";
             this.BtnConsultar.Size = new System.Drawing.Size(187, 97);
             this.BtnConsultar.TabIndex = 2;
@@ -74,9 +75,20 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // btnConsultarBeneficiario
+            // 
+            this.btnConsultarBeneficiario.Location = new System.Drawing.Point(75, 173);
+            this.btnConsultarBeneficiario.Name = "btnConsultarBeneficiario";
+            this.btnConsultarBeneficiario.Size = new System.Drawing.Size(161, 78);
+            this.btnConsultarBeneficiario.TabIndex = 5;
+            this.btnConsultarBeneficiario.Text = "CONSULTAR";
+            this.btnConsultarBeneficiario.UseVisualStyleBackColor = true;
+            this.btnConsultarBeneficiario.Click += new System.EventHandler(this.btnConsultarBeneficiario_Click);
+            // 
             // MenuPrincipalForm
             // 
             this.ClientSize = new System.Drawing.Size(690, 337);
+            this.Controls.Add(this.btnConsultarBeneficiario);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BtnConsultar);
@@ -97,5 +109,6 @@
         private System.Windows.Forms.Button BtnConsultar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnConsultarBeneficiario;
     }
 }

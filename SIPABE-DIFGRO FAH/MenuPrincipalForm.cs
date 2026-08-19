@@ -94,5 +94,14 @@ namespace SIPABE_DIFGRO_FAH
                 Application.Exit();
             }
         }
+
+        private void btnConsultarBeneficiario_Click(object sender, EventArgs e)
+        {
+            FormConsultarBeneficiario formConsultarBeneficiario = new FormConsultarBeneficiario();
+            formConsultarBeneficiario.StartPosition = FormStartPosition.CenterScreen;
+            this.Hide();
+            formConsultarBeneficiario.ShowDialog();
+            this.Show();
+        }
     }
 }
