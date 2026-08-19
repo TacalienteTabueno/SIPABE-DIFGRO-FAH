@@ -33,7 +33,7 @@
             // 
             // TxtCurp
             // 
-            this.TxtCurp.Location = new System.Drawing.Point(123, 36);
+            this.TxtCurp.Location = new System.Drawing.Point(36, 46);
             this.TxtCurp.Name = "TxtCurp";
             this.TxtCurp.Size = new System.Drawing.Size(214, 20);
             this.TxtCurp.TabIndex = 0;
