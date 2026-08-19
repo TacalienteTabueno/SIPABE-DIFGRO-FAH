@@ -34,14 +34,17 @@
             // 
             // TxtBuscador
             // 
-            this.TxtBuscador.Location = new System.Drawing.Point(56, 136);
+            this.TxtBuscador.Location = new System.Drawing.Point(154, 133);
+            this.TxtBuscador.Multiline = true;
             this.TxtBuscador.Name = "TxtBuscador";
-            this.TxtBuscador.Size = new System.Drawing.Size(270, 20);
+            this.TxtBuscador.Size = new System.Drawing.Size(265, 40);
             this.TxtBuscador.TabIndex = 0;
+            this.TxtBuscador.TextChanged += new System.EventHandler(this.TxtBuscador_TextChanged);
+            this.TxtBuscador.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtBuscador_KeyPress);
             // 
             // BtnBuscar
             // 
-            this.BtnBuscar.Location = new System.Drawing.Point(337, 229);
+            this.BtnBuscar.Location = new System.Drawing.Point(204, 223);
             this.BtnBuscar.Name = "BtnBuscar";
             this.BtnBuscar.Size = new System.Drawing.Size(165, 89);
             this.BtnBuscar.TabIndex = 1;

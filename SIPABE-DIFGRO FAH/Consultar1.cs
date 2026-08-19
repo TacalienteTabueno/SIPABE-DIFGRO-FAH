@@ -85,6 +85,33 @@ namespace SIPABE_DIFGRO_FAH
             InitializeComponent();
         }
 
+
+        private void TxtBuscador_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permitir teclas de control (Backspace, Enter, etc.)
+            if (char.IsControl(e.KeyChar))
+                return;
+
+            // Permitir solo letras y números
+            if (!char.IsLetterOrDigit(e.KeyChar))
+            {
+                e.Handled = true; // Cancela la entrada
+                MessageBox.Show("Solo se permiten letras y números.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        // También limitar a 18 caracteres
+        private void TxtBuscador_TextChanged(object sender, EventArgs e)
+        {
+            if (TxtBuscador.Text.Length > 18)
+            {
+                TxtBuscador.Text = TxtBuscador.Text.Substring(0, 18);
+                TxtBuscador.SelectionStart = TxtBuscador.Text.Length;
+                MessageBox.Show("Máximo 18 caracteres permitidos.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
             string datoABuscar = TxtBuscador.Text.Trim();
