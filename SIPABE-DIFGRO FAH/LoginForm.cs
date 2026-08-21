@@ -282,13 +282,17 @@ namespace SIPABE_DIFGRO_FAH
 
                     e.Graphics.DrawImage(imgOriginal, posX, posY, nuevoAncho, nuevoAlto);
                 }
-
-                // Borde circular exterior
-               /* using (Pen pen = new Pen(colorBorde, grosorBorde))
-                {
-                    e.Graphics.DrawEllipse(pen, grosorBorde / 2f, grosorBorde / 2f, diametro - grosorBorde, diametro - grosorBorde);
-                }*/
             };
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

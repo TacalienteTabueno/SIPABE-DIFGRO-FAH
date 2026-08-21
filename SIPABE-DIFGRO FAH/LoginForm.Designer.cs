@@ -42,6 +42,7 @@ namespace SIPABE_DIFGRO_FAH
             this.Txt_Pass = new ReaLTaiizor.Controls.HopeTextBox();
             this.TxtCapturistaNamae = new ReaLTaiizor.Controls.HopeTextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,7 +58,7 @@ namespace SIPABE_DIFGRO_FAH
             this.Btn_Login.ForeColor = System.Drawing.Color.Maroon;
             this.Btn_Login.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
             this.Btn_Login.InfoColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(147)))), ((int)(((byte)(153)))));
-            this.Btn_Login.Location = new System.Drawing.Point(100, 411);
+            this.Btn_Login.Location = new System.Drawing.Point(96, 432);
             this.Btn_Login.Name = "Btn_Login";
             this.Btn_Login.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(158)))), ((int)(((byte)(255)))));
             this.Btn_Login.Size = new System.Drawing.Size(280, 47);
@@ -77,7 +78,7 @@ namespace SIPABE_DIFGRO_FAH
             this.Txt_User.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txt_User.ForeColor = System.Drawing.Color.Maroon;
             this.Txt_User.Hint = "";
-            this.Txt_User.Location = new System.Drawing.Point(100, 261);
+            this.Txt_User.Location = new System.Drawing.Point(96, 282);
             this.Txt_User.MaxLength = 32770;
             this.Txt_User.Multiline = false;
             this.Txt_User.Name = "Txt_User";
@@ -101,7 +102,7 @@ namespace SIPABE_DIFGRO_FAH
             this.Txt_Pass.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txt_Pass.ForeColor = System.Drawing.Color.Maroon;
             this.Txt_Pass.Hint = "";
-            this.Txt_Pass.Location = new System.Drawing.Point(100, 337);
+            this.Txt_Pass.Location = new System.Drawing.Point(96, 358);
             this.Txt_Pass.MaxLength = 32767;
             this.Txt_Pass.Multiline = false;
             this.Txt_Pass.Name = "Txt_Pass";
@@ -149,22 +150,35 @@ namespace SIPABE_DIFGRO_FAH
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(119, 233);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(238, 30);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "SIPABE DIF GUERRERO";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Maroon;
             this.ClientSize = new System.Drawing.Size(471, 508);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.TxtCapturistaNamae);
             this.Controls.Add(this.Txt_Pass);
             this.Controls.Add(this.Txt_User);
             this.Controls.Add(this.Btn_Login);
             this.Name = "LoginForm";
-            this.Text = "Form1";
+            this.Text = " ";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -175,6 +189,7 @@ namespace SIPABE_DIFGRO_FAH
         private ReaLTaiizor.Controls.HopeTextBox Txt_Pass;
         private ReaLTaiizor.Controls.HopeTextBox TxtCapturistaNamae;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label1;
     }
 }
 
