@@ -172,6 +172,12 @@
     <Compile Include="FormConsultarBeneficiario.Designer.cs">
       <DependentUpon>FormConsultarBeneficiario.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormMenuUsuarioEncontrado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMenuUsuarioEncontrado.Designer.cs">
+      <DependentUpon>FormMenuUsuarioEncontrado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Registrar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -201,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormConsultarBeneficiario.resx">
       <DependentUpon>FormConsultarBeneficiario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMenuUsuarioEncontrado.resx">
+      <DependentUpon>FormMenuUsuarioEncontrado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

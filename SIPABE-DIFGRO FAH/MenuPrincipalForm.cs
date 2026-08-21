@@ -45,7 +45,7 @@ namespace SIPABE_DIFGRO_FAH
             Registrar formCaptura = new Registrar();
             formCaptura.StartPosition = FormStartPosition.CenterScreen;
             this.Hide(); // Oculta el Menú Principal en lugar de destruirlo
-            formCaptura.ShowDialog(); // Muestra el formulario de captura como modal
+            formCaptura.Show(); // Muestra el formulario de captura como modal
             this.Show(); // Cuando se cierre el formulario de captura, vuelve a mostrar el Menú Principal
         }
 
@@ -74,7 +74,7 @@ namespace SIPABE_DIFGRO_FAH
             // 3. EL TRUCO DE MAGIA: Le decimos a la ventana de captura que, 
             // cuando se cierre, vuelva a mostrar este Menú Principal.
             //formConsulta.FormClosed += (s, args) => this.Show();
-            formConsulta.ShowDialog();
+            formConsulta.Show();
             this.Show();
             // 4. Mostramos la ventana de captura
             //formConsulta.Show();
@@ -99,9 +99,10 @@ namespace SIPABE_DIFGRO_FAH
         {
             FormConsultarBeneficiario formConsultarBeneficiario = new FormConsultarBeneficiario();
             formConsultarBeneficiario.StartPosition = FormStartPosition.CenterScreen;
-            this.Hide();
-            formConsultarBeneficiario.ShowDialog();
-            this.Show();
+            //this.Hide();
+            this.Close();
+            formConsultarBeneficiario.Show();
+            //this.Show();
         }
     }
 }

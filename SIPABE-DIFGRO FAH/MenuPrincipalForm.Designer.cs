@@ -28,32 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.BtnCapturaQR = new System.Windows.Forms.Button();
-            this.BtnConsultar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnConsultarBeneficiario = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // BtnCapturaQR
-            // 
-            this.BtnCapturaQR.Location = new System.Drawing.Point(438, 267);
-            this.BtnCapturaQR.Name = "BtnCapturaQR";
-            this.BtnCapturaQR.Size = new System.Drawing.Size(187, 97);
-            this.BtnCapturaQR.TabIndex = 1;
-            this.BtnCapturaQR.Text = "REGISTAR";
-            this.BtnCapturaQR.UseVisualStyleBackColor = true;
-            this.BtnCapturaQR.Click += new System.EventHandler(this.BtnCapturaQR_Click);
-            // 
-            // BtnConsultar
-            // 
-            this.BtnConsultar.Location = new System.Drawing.Point(438, 61);
-            this.BtnConsultar.Name = "BtnConsultar";
-            this.BtnConsultar.Size = new System.Drawing.Size(187, 97);
-            this.BtnConsultar.TabIndex = 2;
-            this.BtnConsultar.Text = "CONSULTAR";
-            this.BtnConsultar.UseVisualStyleBackColor = true;
-            this.BtnConsultar.Click += new System.EventHandler(this.BtnConsultar_Click);
             // 
             // label1
             // 
@@ -91,8 +69,6 @@
             this.Controls.Add(this.btnConsultarBeneficiario);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.BtnConsultar);
-            this.Controls.Add(this.BtnCapturaQR);
             this.Name = "MenuPrincipalForm";
             this.Load += new System.EventHandler(this.MenuPrincipalForm_Load_1);
             this.ResumeLayout(false);
@@ -105,8 +81,6 @@
         private System.Windows.Forms.Button BtnLogout;
         private System.Windows.Forms.Button BtnSalir;
         private System.Windows.Forms.Button BtnConsultaPral;
-        private System.Windows.Forms.Button BtnCapturaQR;
-        private System.Windows.Forms.Button BtnConsultar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnConsultarBeneficiario;
