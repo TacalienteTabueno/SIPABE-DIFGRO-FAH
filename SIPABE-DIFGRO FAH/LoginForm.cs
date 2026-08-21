@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using ReaLTaiizor.Forms;
+using ReaLTaiizor.Util;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,11 +10,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Data.SqlClient;
+using ReaLTaiizor.Controls;
+using System.Drawing.Drawing2D;
 
 namespace SIPABE_DIFGRO_FAH
 {
-    public partial class LoginForm : Form
+    public partial class LoginForm : LostForm
     {
         // Esta variable estática guardará la conexión activa validada para que 
         // los demas formularios funcionen sin pedir contraseña de nuevo.
@@ -26,7 +30,45 @@ namespace SIPABE_DIFGRO_FAH
 
         public LoginForm()
         {
+
             InitializeComponent();
+
+              
+            this.Image = null;
+            this.ShowIcon = false;      // Oculta el ícono de la esquina
+            this.Text = string.Empty;
+
+                // 1. Fondos generales
+                this.BackColor = Color.FromArgb(105, 28, 50); // #58111A
+                this.ForeColor = Color.FromArgb(245, 235, 215); // Texto claro / marfil
+                
+                // 2. Configuración de HopeButton
+                this.Btn_Login.PrimaryColor = Color.FromArgb(245, 235, 215);  // Beige base (#F5EBD7)
+                this.Btn_Login.TextColor = Color.FromArgb(88, 17, 26);
+                this.Btn_Login.BorderColor = Color.FromArgb(197, 160, 89);    // Borde dorado suave
+
+            EstilizarTextBox(this.Txt_User, "Usuario");
+            EstilizarTextBox(this.Txt_Pass, "Contraseña");
+            EstilizarTextBox(this.TxtCapturistaNamae, "Otro dato");
+            
+            this.pictureBox1.Size = new Size(180, 180);
+            this.pictureBox1.Location = new Point((this.ClientSize.Width - this.pictureBox1.Width) / 2, 50);
+            // Aplica el círculo con fondo beige/marfil y borde dorado
+            this.pictureBox1.BackColor = Color.FromArgb(245, 235, 215); // Beige #F5EBD7
+            HacerPictureBoxCircular(this.pictureBox1, Color.FromArgb(197, 160, 89), 3); // Borde dorado de 3px
+        
+        }
+
+        private void EstilizarTextBox(ReaLTaiizor.Controls.HopeTextBox txt, string placeholder)
+        {
+            if (txt == null) return;
+
+            txt.BackColor = Color.FromArgb(245, 235, 215);      // Fondo Beige (#F5EBD7)
+            txt.BaseColor = Color.FromArgb(245, 235, 215);      // Relleno interior Beige
+            txt.BorderColorA = Color.FromArgb(197, 160, 89);     // Borde dorado (al enfocar)
+            txt.BorderColorB = Color.FromArgb(215, 200, 180);    // Borde beige suave (en reposo)
+            txt.ForeColor = Color.FromArgb(50, 8, 14);          // Texto en vino oscuro
+            txt.Hint = placeholder;                             // Texto guía
         }
 
         private void Btn_Login_Click(object sender, EventArgs e)
@@ -204,6 +246,49 @@ namespace SIPABE_DIFGRO_FAH
                     }
                 }
             }
+        }
+
+        private void HacerPictureBoxCircular(PictureBox pb, Color colorBorde, int grosorBorde = 2, int margenInterno = 15)
+        {
+            int diametro = Math.Min(pb.Width, pb.Height);
+            pb.Size = new Size(diametro, diametro);
+
+            Image imgOriginal = pb.Image;
+            pb.Image = null;
+
+            // Máscara circular para el contenedor
+            GraphicsPath path = new GraphicsPath();
+            path.AddEllipse(0, 0, diametro, diametro);
+            pb.Region = new Region(path);
+
+            pb.Paint += (s, e) =>
+            {
+                e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+
+                if (imgOriginal != null)
+                {
+                    // Espacio disponible dentro del círculo
+                    float maxDim = diametro - ((margenInterno + grosorBorde) * 2);
+
+                    // Calcular escala manteniendo la proporción exacta (Aspect Ratio)
+                    float escala = Math.Min(maxDim / imgOriginal.Width, maxDim / imgOriginal.Height);
+                    float nuevoAncho = imgOriginal.Width * escala;
+                    float nuevoAlto = imgOriginal.Height * escala;
+
+                    // Centrar perfectamente la imagen
+                    float posX = (diametro - nuevoAncho) / 2f;
+                    float posY = (diametro - nuevoAlto) / 2f;
+
+                    e.Graphics.DrawImage(imgOriginal, posX, posY, nuevoAncho, nuevoAlto);
+                }
+
+                // Borde circular exterior
+               /* using (Pen pen = new Pen(colorBorde, grosorBorde))
+                {
+                    e.Graphics.DrawEllipse(pen, grosorBorde / 2f, grosorBorde / 2f, diametro - grosorBorde, diametro - grosorBorde);
+                }*/
+            };
         }
     }
 }
