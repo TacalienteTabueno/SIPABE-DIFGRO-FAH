@@ -52,6 +52,7 @@ namespace SIPABE_DIFGRO_FAH
             EstilizarTextBox(this.TxtCapturistaNamae, "Otro dato");
             
             this.pictureBox1.Size = new Size(180, 180);
+            this.pictureBox1.Location = new Point((this.ClientSize.Width - this.pictureBox1.Width) / 2, 50);
             // Aplica el círculo con fondo beige/marfil y borde dorado
             this.pictureBox1.BackColor = Color.FromArgb(245, 235, 215); // Beige #F5EBD7
             HacerPictureBoxCircular(this.pictureBox1, Color.FromArgb(197, 160, 89), 3); // Borde dorado de 3px
@@ -246,27 +247,47 @@ namespace SIPABE_DIFGRO_FAH
                 }
             }
         }
-        private void HacerPictureBoxCircular(PictureBox pb, Color colorBorde, int grosorBorde = 2)
+
+        private void HacerPictureBoxCircular(PictureBox pb, Color colorBorde, int grosorBorde = 2, int margenInterno = 15)
         {
-            // 1. Asegurar proporción cuadrada para que sea un círculo perfecto
             int diametro = Math.Min(pb.Width, pb.Height);
             pb.Size = new Size(diametro, diametro);
-            pb.SizeMode = PictureBoxSizeMode.Zoom;
 
-            // 2. Crear la máscara circular
+            Image imgOriginal = pb.Image;
+            pb.Image = null;
+
+            // Máscara circular para el contenedor
             GraphicsPath path = new GraphicsPath();
             path.AddEllipse(0, 0, diametro, diametro);
             pb.Region = new Region(path);
 
-            // 3. Dibujar el borde circular
             pb.Paint += (s, e) =>
             {
                 e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-                using (Pen pen = new Pen(colorBorde, grosorBorde))
+                e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+
+                if (imgOriginal != null)
                 {
-                    // Ajuste fino para que el borde no quede cortado en los extremos
-                    e.Graphics.DrawEllipse(pen, grosorBorde / 2f, grosorBorde / 2f, diametro - grosorBorde, diametro - grosorBorde);
+                    // Espacio disponible dentro del círculo
+                    float maxDim = diametro - ((margenInterno + grosorBorde) * 2);
+
+                    // Calcular escala manteniendo la proporción exacta (Aspect Ratio)
+                    float escala = Math.Min(maxDim / imgOriginal.Width, maxDim / imgOriginal.Height);
+                    float nuevoAncho = imgOriginal.Width * escala;
+                    float nuevoAlto = imgOriginal.Height * escala;
+
+                    // Centrar perfectamente la imagen
+                    float posX = (diametro - nuevoAncho) / 2f;
+                    float posY = (diametro - nuevoAlto) / 2f;
+
+                    e.Graphics.DrawImage(imgOriginal, posX, posY, nuevoAncho, nuevoAlto);
                 }
+
+                // Borde circular exterior
+               /* using (Pen pen = new Pen(colorBorde, grosorBorde))
+                {
+                    e.Graphics.DrawEllipse(pen, grosorBorde / 2f, grosorBorde / 2f, diametro - grosorBorde, diametro - grosorBorde);
+                }*/
             };
         }
     }

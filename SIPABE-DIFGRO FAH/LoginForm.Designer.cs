@@ -60,7 +60,7 @@ namespace SIPABE_DIFGRO_FAH
             this.Btn_Login.Location = new System.Drawing.Point(100, 411);
             this.Btn_Login.Name = "Btn_Login";
             this.Btn_Login.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(158)))), ((int)(((byte)(255)))));
-            this.Btn_Login.Size = new System.Drawing.Size(280, 57);
+            this.Btn_Login.Size = new System.Drawing.Size(280, 47);
             this.Btn_Login.SuccessColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(194)))), ((int)(((byte)(58)))));
             this.Btn_Login.TabIndex = 0;
             this.Btn_Login.Text = "Ingresar";
@@ -77,7 +77,7 @@ namespace SIPABE_DIFGRO_FAH
             this.Txt_User.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txt_User.ForeColor = System.Drawing.Color.Maroon;
             this.Txt_User.Hint = "";
-            this.Txt_User.Location = new System.Drawing.Point(100, 245);
+            this.Txt_User.Location = new System.Drawing.Point(100, 261);
             this.Txt_User.MaxLength = 32770;
             this.Txt_User.Multiline = false;
             this.Txt_User.Name = "Txt_User";
@@ -142,7 +142,7 @@ namespace SIPABE_DIFGRO_FAH
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(171, 55);
+            this.pictureBox1.Location = new System.Drawing.Point(197, 93);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(73, 103);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
