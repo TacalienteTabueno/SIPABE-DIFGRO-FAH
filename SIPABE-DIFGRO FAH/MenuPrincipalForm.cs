@@ -100,7 +100,7 @@ namespace SIPABE_DIFGRO_FAH
             FormConsultarBeneficiario formConsultarBeneficiario = new FormConsultarBeneficiario();
             formConsultarBeneficiario.StartPosition = FormStartPosition.CenterScreen;
             //this.Hide();
-            this.Close();
+            this.Dispose();
             formConsultarBeneficiario.Show();
             //this.Show();
         }
