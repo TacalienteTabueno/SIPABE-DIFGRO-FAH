@@ -49,24 +49,21 @@ namespace SIPABE_DIFGRO_FAH
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
-                if (txtCurpBeneficiario.Text.Length == 18)
-                {
-                    //-----------------------------
-                        // AKI DEVO DE KOLOKAR UNA FUNZYON BOOLEANA QUE VERIFIQUE SI LA CURP CONTIENE LA ESTRUCTURA DE CURP
-                        // 4 PRIMEROS DIGITOS (LETRAS)
-                        // 6 DIGITOS MAS (SOLO NÚMEROS)
-                        // 1 DIGITO (H O M)
-                        // 2 DIGITOS DE LA CLAVE RENAPO, YA SABES, GR PA GUERRERO, SN PA SINALOA, BC PA BAJA CALIFORNIA, Y UN PEZCADO PA VERACRU´ XD
-                    //-----------------------------
-                    
-                    buscarInformacionBeneficiario(txtCurpBeneficiario.Text.Substring(0, 18));
-                }
-                else
-                {
-                    MessageBox.Show("El campo de la curp debe tener 18 dígitos.\nAhorita solo tiene: " + txtCurpBeneficiario.Text.Length, "CURP", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtCurpBeneficiario.Text = "";
-                }
+                metodoBusqueda();
             }
+        }
+
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            MenuPrincipalForm menu = new MenuPrincipalForm();
+            menu.Show();
+
+        }
+
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            metodoBusqueda();
         }
 
         private void buscarInformacionBeneficiario(String curpEvaluar)
@@ -190,5 +187,26 @@ namespace SIPABE_DIFGRO_FAH
                 }
             }
         }
+        public void metodoBusqueda()
+        {
+            if (txtCurpBeneficiario.Text.Length == 18)
+            {
+                //-----------------------------
+                // AKI DEVO DE KOLOKAR UNA FUNZYON BOOLEANA QUE VERIFIQUE SI LA CURP CONTIENE LA ESTRUCTURA DE CURP
+                // 4 PRIMEROS DIGITOS (LETRAS)
+                // 6 DIGITOS MAS (SOLO NÚMEROS)
+                // 1 DIGITO (H O M)
+                // 2 DIGITOS DE LA CLAVE RENAPO, YA SABES, GR PA GUERRERO, SN PA SINALOA, BC PA BAJA CALIFORNIA, Y UN PEZCADO PA VERACRU´ XD
+                //-----------------------------
+
+                buscarInformacionBeneficiario(txtCurpBeneficiario.Text.Substring(0, 18));
+            }
+            else
+            {
+                MessageBox.Show("El campo de la curp debe tener 18 dígitos.\nAhorita solo tiene: " + txtCurpBeneficiario.Text.Length, "CURP", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCurpBeneficiario.Text = "";
+            }
+        }
+
     }
 }

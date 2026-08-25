@@ -30,6 +30,8 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.txtCurpBeneficiario = new System.Windows.Forms.TextBox();
+            this.btnConsultar = new System.Windows.Forms.Button();
+            this.btnRegresar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -54,15 +56,37 @@
             this.txtCurpBeneficiario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCurpBeneficiario_KeyPress);
             this.txtCurpBeneficiario.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.txtCurpBeneficiario_PreviewKeyDown);
             // 
+            // btnConsultar
+            // 
+            this.btnConsultar.Location = new System.Drawing.Point(161, 281);
+            this.btnConsultar.Name = "btnConsultar";
+            this.btnConsultar.Size = new System.Drawing.Size(145, 67);
+            this.btnConsultar.TabIndex = 2;
+            this.btnConsultar.Text = "CONSULTAR";
+            this.btnConsultar.UseVisualStyleBackColor = true;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
+            // 
+            // btnRegresar
+            // 
+            this.btnRegresar.Location = new System.Drawing.Point(463, 285);
+            this.btnRegresar.Name = "btnRegresar";
+            this.btnRegresar.Size = new System.Drawing.Size(196, 62);
+            this.btnRegresar.TabIndex = 3;
+            this.btnRegresar.Text = "REGRESAR";
+            this.btnRegresar.UseVisualStyleBackColor = true;
+            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
+            // 
             // FormConsultarBeneficiario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnRegresar);
+            this.Controls.Add(this.btnConsultar);
             this.Controls.Add(this.txtCurpBeneficiario);
             this.Controls.Add(this.label1);
             this.Name = "FormConsultarBeneficiario";
-            this.Text = "Form1";
+            this.Text = "Búsqueda beneficiario";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -72,5 +96,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCurpBeneficiario;
+        private System.Windows.Forms.Button btnConsultar;
+        private System.Windows.Forms.Button btnRegresar;
     }
 }

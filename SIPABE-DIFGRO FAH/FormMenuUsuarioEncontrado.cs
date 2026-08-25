@@ -29,5 +29,18 @@ namespace SIPABE_DIFGRO_FAH
             lblNombreCompleto.Text = datosBeneficiario[3].ToString() + " " + datosBeneficiario[4].ToString() + " " + datosBeneficiario[5].ToString();
         }
 
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            FormConsultarBeneficiario formConsultarBeneficiario = new FormConsultarBeneficiario();
+            formConsultarBeneficiario.Show();
+            this.Close();
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            FormAgregarApoyoBeneficiario formAgregarApoyoBeneficiario = new FormAgregarApoyoBeneficiario(this.datosBeneficiarioGlobal);
+            formAgregarApoyoBeneficiario.Show();
+            this.Close();
+        }
     }
 }

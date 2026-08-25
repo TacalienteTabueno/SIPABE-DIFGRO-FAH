@@ -45,6 +45,7 @@
             this.btnAgregar.TabIndex = 0;
             this.btnAgregar.Text = "AGREGAR APOYO";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnConsultarHistorial
             // 
@@ -63,6 +64,7 @@
             this.btnRegresar.TabIndex = 2;
             this.btnRegresar.Text = "REGRESAR";
             this.btnRegresar.UseVisualStyleBackColor = true;
+            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
             // label1
             // 
@@ -125,7 +127,7 @@
             this.Controls.Add(this.btnConsultarHistorial);
             this.Controls.Add(this.btnAgregar);
             this.Name = "FormMenuUsuarioEncontrado";
-            this.Text = "jgdgd";
+            this.Text = "Usuario encontrado";
             this.ResumeLayout(false);
             this.PerformLayout();
 
