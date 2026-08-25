@@ -7,18 +7,118 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ReaLTaiizor.Controls;
+using ReaLTaiizor.Forms;
 
 namespace SIPABE_DIFGRO_FAH
 {
-    public partial class MenuPrincipalForm : Form
+    public partial class MenuPrincipalForm : LostForm
     {
+        private readonly Color ColorVinoPrincipal = Color.FromArgb(105, 28, 50);  // #691C32
+        private readonly Color ColorBeige = Color.FromArgb(245, 235, 215); // #F5EBD7
+        private readonly Color ColorDorado = Color.FromArgb(197, 160, 89);  // #C5A059
         public MenuPrincipalForm()
         {
             InitializeComponent();
 
             // Usamos StartPosition para que las ventanas siempre aparezcan centradas en la pantalla
             this.StartPosition = FormStartPosition.CenterScreen;
+
+            this.Text = string.Empty;
+            this.Image = null;
+            this.ShowIcon = false;
+            this.BackColor = ColorVinoPrincipal;
+            this.HeaderColor = ColorVinoPrincipal;
+            this.BorderColor = ColorDorado;
+
+            ConfigurarDisenoMenu();
+
+            if (this.btnConsultarBeneficiario != null)
+            {
+                this.btnConsultarBeneficiario.Click += btnConsultarBeneficiario_Click;
+            }
+
+            if (this.btnExit != null)
+            {
+                this.btnExit.Click += btnExit_Click;
+            }
         }
+        private void ConfigurarDisenoMenu()
+        {
+            if (this.pictureBox1 != null) 
+            {
+                int altoImagen = 75;      // Altura visible del banner
+                int anchoImagen = 340;    // Ancho del banner
+
+                this.pictureBox1.Size = new Size(anchoImagen, altoImagen);
+                this.pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+                this.pictureBox1.BackColor = Color.Transparent;
+
+                // Centrado horizontal exacto y margen superior cómodo
+                this.pictureBox1.Location = new Point(
+                    (this.ClientSize.Width - anchoImagen) / 2,
+                    55 // Espacio debajo de la barra superior
+                );
+                this.pictureBox1.BringToFront();
+            }
+
+            // 1. Configurar y centrar el título
+            if (this.label1 != null)
+            {
+                this.label1.Text = "BIENVENIDO A SIPABE";
+                this.label1.Font = new Font("Segoe UI", 22f, FontStyle.Bold);
+                this.label1.ForeColor = ColorBeige;
+                this.label1.BackColor = Color.Transparent;
+                this.label1.AutoSize = true;
+
+                int posYTexto = (this.pictureBox1 != null) ? this.pictureBox1.Bottom + 18 : 140;
+
+                this.label1.Location = new Point(
+                    (this.ClientSize.Width - this.label1.PreferredWidth) / 2,
+                    posYTexto
+                );
+                this.label1.BringToFront();
+            }
+
+            // 3. Posicionar botones CONSULTAR y SALIR
+            int anchoBoton = 190;
+            int altoBoton = 52;
+            int separacionBotones = 30;
+            int posYBotones = 230; // Bajamos los botones proporcionalmente
+
+            int anchoGrupo = (anchoBoton * 2) + separacionBotones;
+            int posXInicio = (this.ClientSize.Width - anchoGrupo) / 2;
+
+            // Botón CONSULTAR
+            if (this.btnConsultarBeneficiario != null)
+            {
+                this.btnConsultarBeneficiario.Text = "CONSULTAR";
+                this.btnConsultarBeneficiario.Font = new Font("Segoe UI", 14f, FontStyle.Bold);
+                this.btnConsultarBeneficiario.Size = new Size(anchoBoton, altoBoton);
+                this.btnConsultarBeneficiario.Location = new Point(posXInicio, posYBotones);
+                this.btnConsultarBeneficiario.PrimaryColor = ColorBeige;
+                this.btnConsultarBeneficiario.TextColor = ColorVinoPrincipal;
+                this.btnConsultarBeneficiario.BorderColor = ColorDorado;
+                this.btnConsultarBeneficiario.HoverTextColor = ColorDorado;
+                this.btnConsultarBeneficiario.Cursor = Cursors.Hand;
+            }
+
+            // Botón SALIR
+            if (this.btnExit != null)
+            {
+                this.btnExit.Text = "SALIR";
+                this.btnExit.Font = new Font("Segoe UI", 14f, FontStyle.Bold);
+                this.btnExit.Size = new Size(anchoBoton, altoBoton);
+                this.btnExit.Location = new Point(posXInicio + anchoBoton + separacionBotones, posYBotones);
+                this.btnExit.PrimaryColor = ColorBeige;
+                this.btnExit.TextColor = ColorVinoPrincipal;
+                this.btnExit.BorderColor = ColorDorado;
+                this.btnExit.HoverTextColor = ColorDorado;
+                this.btnExit.Cursor = Cursors.Hand;
+            }
+        }
+    
+
 
         
 

@@ -32,8 +32,8 @@ namespace SIPABE_DIFGRO_FAH
         {
 
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
 
-          
             this.Image = null;
             this.ShowIcon = false;      // Oculta el ícono de la esquina
             this.Text = string.Empty;
@@ -47,9 +47,11 @@ namespace SIPABE_DIFGRO_FAH
          
 
             // 2. Configuración de HopeButton
-            this.Btn_Login.PrimaryColor = Color.FromArgb(245, 235, 215);  // Beige base (#F5EBD7)
+                this.Btn_Login.PrimaryColor = Color.FromArgb(245, 235, 215);  // Beige base (#F5EBD7)
                 this.Btn_Login.TextColor = Color.FromArgb(88, 17, 26);
                 this.Btn_Login.BorderColor = Color.FromArgb(197, 160, 89);    // Borde dorado suave
+                this.Btn_Login.HoverTextColor = Color.FromArgb(197, 160, 89);
+            this.Btn_Login.Cursor = Cursors.Hand;
 
             EstilizarTextBox(this.Txt_User, "Usuario");
             EstilizarTextBox(this.Txt_Pass, "Contraseña");
