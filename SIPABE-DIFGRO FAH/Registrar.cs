@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ReaLTaiizor.Controls;
+using ReaLTaiizor.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,23 +11,145 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
+
 namespace SIPABE_DIFGRO_FAH
 {
-    public partial class Registrar : Form
+    public partial class Registrar : LostForm
     {
+        //PANTONE
+        private readonly Color ColorVinoPrincipal = Color.FromArgb(105, 28, 50);    // Pantone 7421 C
+        private readonly Color ColorVinoHeader = Color.FromArgb(88, 17, 26);     // Vino oscuro
+        private readonly Color ColorBeige = Color.FromArgb(245, 235, 215);       // Marfil/Beige
+        private readonly Color ColorDorado = Color.FromArgb(197, 160, 89);       // Acento dorado
+        private readonly Color ColorBordeSuave = Color.FromArgb(215, 200, 180);
         // Constructor que acepta texto para que funcione el escaner correctamente
         public Registrar()
         {
             InitializeComponent();
+
+
+            this.Image = null;
+            this.ShowIcon = false;      // Oculta el ícono de la esquina
+            this.Text = string.Empty;
+
+            // 2. Colores de la ventana
+            this.BackColor = ColorVinoPrincipal;
+            this.ForeColor = ColorBeige;
+            this.HeaderColor = ColorVinoHeader;
+            this.BorderColor = ColorDorado;
+
+            ConfigurarDiseñoYPosiciones();
+            this.Shown += (s, e) =>
+            {
+                if (this.TxtQR != null)
+                {
+                    this.ActiveControl = this.TxtQR;
+                    this.TxtQR.Focus();
+                }
+            };
         }
+        private void ConfigurarDiseñoYPosiciones()
+        {
+           // 1. Dimensiones de la estructura
+    int anchoLabel = 190;       // Ancho fijo para que el texto de las etiquetas no se corte
+    int anchoCaja = 280;        // Ancho de los HopeTextBox
+    int altoCaja = 32;          // Alto de cada campo
+    int separacion = 10;        // Espacio vertical entre filas
+    int espacioEntre = 12;      // Espacio horizontal entre la etiqueta y el cuadro de texto
+    int posYInicial = 65;       // Altura de inicio
+
+    // 2. Centrar el bloque completo (Label + Espacio + TextBox) en la ventana
+    int anchoBloqueTotal = anchoLabel + espacioEntre + anchoCaja;
+    int posXLabel = (this.ClientSize.Width - anchoBloqueTotal) / 2;
+    int posXTextBox = posXLabel + anchoLabel + espacioEntre;
+
+        var camposConEtiqueta = new (HopeTextBox txt, string textoLabel)[]
+        {
+            (this.TxtCurp, "CURP:"),
+            (this.TxtNombres, "Nombre(s):"),
+            (this.TxtApellidoPaterno, "Primer Apellido:"),
+            (this.TxtApellidoMaterno, "Segundo Apellido:"),
+            (this.TxtFechaNacimiento, "Fecha de Nacimiento:"),
+            (this.TxtSexo, "Sexo:"),
+            (this.TxtEntidadNacimiento, "Entidad de Nacimiento:"),
+            (this.TxtEntidadRegistro, "Entidad de Registro:")      
+     };
+
+            int yActual = posYInicial;
+
+            foreach (var item in camposConEtiqueta)
+            {
+                if (item.txt != null)
+                {
+                    // --- Crear y configurar Label dinámica ---
+                    Label lbl = new Label
+                    {
+                        Text = item.textoLabel,
+                        Location = new Point(posXLabel, yActual), 
+                        Size = new Size(anchoLabel, altoCaja),
+                        ForeColor = ColorBeige,                       // Texto beige sobre el fondo vino
+                        Font = new Font("Segoe UI", 12f, FontStyle.Bold),
+                        TextAlign = ContentAlignment.MiddleRight,     // Alineado a la derecha hacia la caja de texto
+                        BackColor = Color.Transparent,
+                        AutoSize = false
+                    };
+
+                    this.Controls.Add(lbl);
+                    lbl.BringToFront();
+
+                    item.txt.Location = new Point(posXTextBox, yActual);
+                    item.txt.Size = new Size(anchoCaja, altoCaja);
+                    item.txt.BackColor = ColorBeige;
+                    item.txt.BaseColor = ColorBeige;
+                    item.txt.BorderColorA = ColorDorado;
+                    item.txt.BorderColorB = ColorBordeSuave;
+                    item.txt.ForeColor = ColorVinoPrincipal;
+                    item.txt.Font = new Font("Segoe UI", 10f, FontStyle.Bold);
+                    item.txt.Hint = string.Empty;
+                  
+
+                    yActual += altoCaja + separacion;
+
+                }
+            }
+
+            if (this.BtnRegistrar != null)
+            {
+                int anchoBoton = 320;
+                int altoBoton = 44;
+                int espacioAntesBoton = 18;
+
+                this.BtnRegistrar.Size = new Size(anchoBoton, altoBoton);
+                this.BtnRegistrar.Location = new Point(
+                    (this.ClientSize.Width - anchoBoton) / 2,
+                    yActual + espacioAntesBoton
+                );
+
+                this.BtnRegistrar.Text = "Registrar";
+                this.BtnRegistrar.Font = new Font("Segoe UI", 20f, FontStyle.Bold);
+                this.BtnRegistrar.PrimaryColor = ColorBeige;
+                this.BtnRegistrar.TextColor = ColorVinoPrincipal;
+                this.BtnRegistrar.BorderColor = ColorDorado;
+                this.BtnRegistrar.HoverTextColor = ColorDorado;
+                this.BtnRegistrar.Cursor = Cursors.Hand;
+                this.BtnRegistrar.BringToFront();
+            }
+            if (this.TxtQR != null)
+            {
+                this.TxtQR.Visible = true;                   // Mantiene la capacidad de recibir foco
+                this.TxtQR.Location = new Point(-2000, -2000); // Se envía fuera del área visible
+                this.TxtQR.Size = new Size(100, 30);
+            }
+        }
+
+
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            // Verificamos si la tecla presionada es TAB y si el capturista está parado en TxtQR
-            if (keyData == Keys.Tab && TxtQR.Focused)
+            // Evaluamos ContainsFocus (no Focused) y atrapamos tanto Tab como Enter que mandan los lectores
+            if ((keyData == Keys.Tab || keyData == Keys.Enter) && (TxtQR != null && TxtQR.ContainsFocus))
             {
                 ProcesarCodigoQR();
-
-                return true; // Al retornar 'true', le decimos a Windows: "Ya manejé el TAB, NO muevas el cursor porfi"
+                return true; // Le decimos a Windows que ya procesamos la tecla
             }
 
             return base.ProcessCmdKey(ref msg, keyData);
@@ -129,6 +253,11 @@ namespace SIPABE_DIFGRO_FAH
         
 
         private void textBox11_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TxtQR_Click(object sender, EventArgs e)
         {
 
         }

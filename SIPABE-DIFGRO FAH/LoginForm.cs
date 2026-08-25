@@ -33,7 +33,7 @@ namespace SIPABE_DIFGRO_FAH
 
             InitializeComponent();
 
-              
+          
             this.Image = null;
             this.ShowIcon = false;      // Oculta el ícono de la esquina
             this.Text = string.Empty;
@@ -41,9 +41,13 @@ namespace SIPABE_DIFGRO_FAH
                 // 1. Fondos generales
                 this.BackColor = Color.FromArgb(105, 28, 50); // #58111A
                 this.ForeColor = Color.FromArgb(245, 235, 215); // Texto claro / marfil
-                
-                // 2. Configuración de HopeButton
-                this.Btn_Login.PrimaryColor = Color.FromArgb(245, 235, 215);  // Beige base (#F5EBD7)
+                this.HeaderColor = Color.FromArgb(105, 28, 50);    // Pinta la barra superior del mismo tono vino
+                this.BorderColor = Color.FromArgb(197, 160, 89);   // Borde exterior dorado (#C5A059)
+            
+         
+
+            // 2. Configuración de HopeButton
+            this.Btn_Login.PrimaryColor = Color.FromArgb(245, 235, 215);  // Beige base (#F5EBD7)
                 this.Btn_Login.TextColor = Color.FromArgb(88, 17, 26);
                 this.Btn_Login.BorderColor = Color.FromArgb(197, 160, 89);    // Borde dorado suave
 
@@ -55,8 +59,18 @@ namespace SIPABE_DIFGRO_FAH
             this.pictureBox1.Location = new Point((this.ClientSize.Width - this.pictureBox1.Width) / 2, 50);
             // Aplica el círculo con fondo beige/marfil y borde dorado
             this.pictureBox1.BackColor = Color.FromArgb(245, 235, 215); // Beige #F5EBD7
-            HacerPictureBoxCircular(this.pictureBox1, Color.FromArgb(197, 160, 89), 3); // Borde dorado de 3px
-        
+            this.pictureBox1.Size = new Size(160, 160);
+            HacerPictureBoxCircular(
+                this.pictureBox1,
+                Color.FromArgb(245, 235, 215), // Beige (#F5EBD7)
+                Color.FromArgb(105, 28, 50),  // Dorado (#C5A059)
+                3,
+                12
+                );
+            this.pictureBox1.Location = new Point(
+                (this.ClientSize.Width - this.pictureBox1.Width) / 2,
+                this.pictureBox1.Top // Mantiene su altura actual
+                  );
         }
 
         private void EstilizarTextBox(ReaLTaiizor.Controls.HopeTextBox txt, string placeholder)
@@ -70,7 +84,7 @@ namespace SIPABE_DIFGRO_FAH
             txt.ForeColor = Color.FromArgb(50, 8, 14);          // Texto en vino oscuro
             txt.Hint = placeholder;                             // Texto guía
         }
-
+  
         private void Btn_Login_Click(object sender, EventArgs e)
         {
             string usuario = Txt_User.Text.Trim();
@@ -248,40 +262,68 @@ namespace SIPABE_DIFGRO_FAH
             }
         }
 
-        private void HacerPictureBoxCircular(PictureBox pb, Color colorBorde, int grosorBorde = 2, int margenInterno = 15)
+        private void HacerPictureBoxCircular(PictureBox pb, Color colorFondoCirculo, Color colorBorde, int grosorBorde = 3, int margenInterno = 12)
         {
             int diametro = Math.Min(pb.Width, pb.Height);
             pb.Size = new Size(diametro, diametro);
 
+            pb.BackColor = Color.Transparent;
+
             Image imgOriginal = pb.Image;
             pb.Image = null;
 
-            // Máscara circular para el contenedor
-            GraphicsPath path = new GraphicsPath();
-            path.AddEllipse(0, 0, diametro, diametro);
-            pb.Region = new Region(path);
+            // Quitamos el recorte brusco de Region para permitir Antialiasing real
+            pb.Region = null;
 
             pb.Paint += (s, e) =>
             {
-                e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-                e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                Graphics g = e.Graphics;
 
+                // Calidad máxima de renderizado y suavizado de bordes
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+                float ajusteGrosor = grosorBorde / 2f;
+                float tamanoCirculo = diametro - grosorBorde;
+
+                // 1. Relleno circular de fondo beige (suavizado)
+                using (SolidBrush brushFondo = new SolidBrush(colorFondoCirculo))
+                {
+                    g.FillEllipse(brushFondo, ajusteGrosor, ajusteGrosor, tamanoCirculo, tamanoCirculo);
+                }
+
+                // 2. Dibujar la imagen recortada dentro del círculo
                 if (imgOriginal != null)
                 {
-                    // Espacio disponible dentro del círculo
+                    // Espacio interior disponible
                     float maxDim = diametro - ((margenInterno + grosorBorde) * 2);
 
-                    // Calcular escala manteniendo la proporción exacta (Aspect Ratio)
+                    // Mantener proporción sin deformar
                     float escala = Math.Min(maxDim / imgOriginal.Width, maxDim / imgOriginal.Height);
                     float nuevoAncho = imgOriginal.Width * escala;
                     float nuevoAlto = imgOriginal.Height * escala;
 
-                    // Centrar perfectamente la imagen
                     float posX = (diametro - nuevoAncho) / 2f;
                     float posY = (diametro - nuevoAlto) / 2f;
 
-                    e.Graphics.DrawImage(imgOriginal, posX, posY, nuevoAncho, nuevoAlto);
+                    // Recorte suave para que nada de la imagen se salga del círculo
+                    using (GraphicsPath clipPath = new GraphicsPath())
+                    {
+                        clipPath.AddEllipse(ajusteGrosor, ajusteGrosor, tamanoCirculo, tamanoCirculo);
+                        g.SetClip(clipPath);
+                        g.DrawImage(imgOriginal, posX, posY, nuevoAncho, nuevoAlto);
+                        g.ResetClip();
+                    }
                 }
+
+                // 3. Dibujar el borde exterior dorado con suavizado
+                using (Pen pen = new Pen(colorBorde, grosorBorde))
+                {
+                    pen.Alignment = PenAlignment.Center;
+                    g.DrawEllipse(pen, ajusteGrosor, ajusteGrosor, tamanoCirculo, tamanoCirculo);
+                }
+            
             };
         }
 
