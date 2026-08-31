@@ -197,7 +197,7 @@ namespace SIPABE_DIFGRO_FAH
 
         private void btnConsultarBeneficiario_Click(object sender, EventArgs e)
         {
-            FormConsultarBeneficiario formConsultarBeneficiario = new FormConsultarBeneficiario();
+            ConsultarBeneficiario formConsultarBeneficiario = new ConsultarBeneficiario();
             formConsultarBeneficiario.StartPosition = FormStartPosition.CenterScreen;
             //this.Hide();
             this.Dispose();

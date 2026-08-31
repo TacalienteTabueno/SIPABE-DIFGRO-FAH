@@ -8,18 +8,137 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ReaLTaiizor.Controls;
+using ReaLTaiizor.Forms;
 
 namespace SIPABE_DIFGRO_FAH
 {
-    public partial class FormConsultarBeneficiario : Form
+    public partial class ConsultarBeneficiario : LostForm
     {
+        private readonly Color ColorVinoPrincipal = Color.FromArgb(105, 28, 50);   // #691C32
+        private readonly Color ColorBeige = Color.FromArgb(245, 235, 215); // #F5EBD7
+        private readonly Color ColorDorado = Color.FromArgb(197, 160, 89);  // #C5A059
+        private readonly Color ColorBordeSuave = Color.FromArgb(210, 195, 175);
+
         private object[] datosBeneficiarioGlobal;
 
-        public FormConsultarBeneficiario()
+        public ConsultarBeneficiario()
         {
             InitializeComponent();
+
+            // 1. Configuración de LostForm
+            this.Text = string.Empty;
+            this.Image = null;
+            this.ShowIcon = false;
+            this.BackColor = ColorVinoPrincipal;
+            this.HeaderColor = ColorVinoPrincipal;
+            this.BorderColor = ColorDorado;
+
+            // 2. Aplicar diseño y centrado
+            ConfigurarDiseñoBusqueda();
+
+            // 3. Foco directo a la caja para lectura inmediata del escáner
+            this.Shown += (s, e) =>
+            {
+                if (this.txtCurpBeneficiario != null)
+                {
+                    this.ActiveControl = this.txtCurpBeneficiario;
+                    this.txtCurpBeneficiario.Focus();
+                }
+            };
         }
 
+        private void ConfigurarDiseñoBusqueda()
+        {
+            // 1. Título principal centrado
+            if (this.label1 != null) // Ajusta al nombre de tu Label de título
+            {
+                this.label1.Text = "ESCANEE LA CURP DEL BENEFICIARIO";
+                this.label1.Font = new Font("Segoe UI", 18f, FontStyle.Bold);
+                this.label1.ForeColor = ColorBeige;
+                this.label1.BackColor = Color.Transparent;
+                this.label1.AutoSize = true;
+
+                this.label1.Location = new Point(
+                    (this.ClientSize.Width - this.label1.PreferredWidth) / 2,
+                    75
+                );
+            }
+
+            // 2. Campo de búsqueda (HopeTextBox)
+            int anchoCaja = 460;
+            int altoCaja = 40;
+            int posYCaja = 145;
+
+            if (this.txtCurpBeneficiario != null)
+            {
+                this.txtCurpBeneficiario.Size = new Size(anchoCaja, altoCaja);
+                this.txtCurpBeneficiario.Location = new Point(
+                    (this.ClientSize.Width - anchoCaja) / 2,
+                    posYCaja
+                );
+
+                this.txtCurpBeneficiario.BackColor = ColorBeige;
+                this.txtCurpBeneficiario.BaseColor = ColorBeige;
+                this.txtCurpBeneficiario.BorderColorA = ColorDorado;
+                this.txtCurpBeneficiario.BorderColorB = ColorBordeSuave;
+                this.txtCurpBeneficiario.ForeColor = ColorVinoPrincipal;
+                this.txtCurpBeneficiario.Font = new Font("Segoe UI", 12f, FontStyle.Bold);
+                this.txtCurpBeneficiario.Hint = string.Empty;
+            }
+
+            // 3. Botones CONSULTAR y REGRESAR
+            int anchoBoton = 175;
+            int altoBoton = 48;
+            int separacionBotones = 30;
+            int posYBotones = 220;
+
+            int anchoGrupo = (anchoBoton * 2) + separacionBotones;
+            int posXInicio = (this.ClientSize.Width - anchoGrupo) / 2;
+
+            // Botón CONSULTAR
+            if (this.btnConsultar != null)
+            {
+                this.btnConsultar.Text = "CONSULTAR";
+                this.btnConsultar.Font = new Font("Segoe UI", 11f, FontStyle.Bold);
+                this.btnConsultar.Size = new Size(anchoBoton, altoBoton);
+                this.btnConsultar.Location = new Point(posXInicio, posYBotones);
+                this.btnConsultar.PrimaryColor = ColorBeige;
+                this.btnConsultar.TextColor = ColorVinoPrincipal;
+                this.btnConsultar.BorderColor = ColorDorado;
+                this.btnConsultar.HoverTextColor = ColorDorado;
+                this.btnConsultar.Cursor = Cursors.Hand;
+            }
+
+            // Botón REGRESAR
+            if (this.btnRegresar != null)
+            {
+                this.btnRegresar.Text = "REGRESAR";
+                this.btnRegresar.Font = new Font("Segoe UI", 11f, FontStyle.Bold);
+                this.btnRegresar.Size = new Size(anchoBoton, altoBoton);
+                this.btnRegresar.Location = new Point(posXInicio + anchoBoton + separacionBotones, posYBotones);
+                this.btnRegresar.PrimaryColor = ColorBeige;
+                this.btnRegresar.TextColor = ColorVinoPrincipal;
+                this.btnRegresar.BorderColor = ColorDorado;
+                this.btnRegresar.HoverTextColor = ColorDorado;
+                this.btnRegresar.Cursor = Cursors.Hand;
+            }
+        }
+
+        // Manejo de ENTER y TAB al escanear
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if ((keyData == Keys.Enter || keyData == Keys.Tab) &&
+                (this.txtCurpBeneficiario != null && this.txtCurpBeneficiario.ContainsFocus))
+            {
+                // Dispara la acción del botón consultar al terminar de escanear
+                btnConsultar_Click(this.btnConsultar, EventArgs.Empty);
+                return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+    
         private void txtCurpBeneficiario_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Permitir teclas de control (Backspace, Enter, etc.)
@@ -208,5 +327,9 @@ namespace SIPABE_DIFGRO_FAH
             }
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

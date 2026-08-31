@@ -31,7 +31,7 @@ namespace SIPABE_DIFGRO_FAH
 
         private void btnRegresar_Click(object sender, EventArgs e)
         {
-            FormConsultarBeneficiario formConsultarBeneficiario = new FormConsultarBeneficiario();
+            ConsultarBeneficiario formConsultarBeneficiario = new ConsultarBeneficiario();
             formConsultarBeneficiario.Show();
             this.Close();
         }
