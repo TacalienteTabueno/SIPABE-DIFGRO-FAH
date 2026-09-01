@@ -306,7 +306,7 @@
             // Registrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.ClientSize = new System.Drawing.Size(535, 510);
+            this.ClientSize = new System.Drawing.Size(597, 510);
             this.Controls.Add(this.BtnRegistrar);
             this.Controls.Add(this.TxtSexo);
             this.Controls.Add(this.TxtFechaNacimiento);

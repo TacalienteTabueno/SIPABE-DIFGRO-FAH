@@ -51,8 +51,8 @@ namespace SIPABE_DIFGRO_FAH
         private void ConfigurarDiseñoYPosiciones()
         {
            // 1. Dimensiones de la estructura
-    int anchoLabel = 190;       // Ancho fijo para que el texto de las etiquetas no se corte
-    int anchoCaja = 280;        // Ancho de los HopeTextBox
+    int anchoLabel = 220;       // Ancho fijo para que el texto de las etiquetas no se corte
+    int anchoCaja = 300;        // Ancho de los HopeTextBox
     int altoCaja = 32;          // Alto de cada campo
     int separacion = 10;        // Espacio vertical entre filas
     int espacioEntre = 12;      // Espacio horizontal entre la etiqueta y el cuadro de texto
@@ -66,13 +66,13 @@ namespace SIPABE_DIFGRO_FAH
         var camposConEtiqueta = new (HopeTextBox txt, string textoLabel)[]
         {
             (this.TxtCurp, "CURP:"),
-            (this.TxtNombres, "Nombre(s):"),
-            (this.TxtApellidoPaterno, "Primer Apellido:"),
-            (this.TxtApellidoMaterno, "Segundo Apellido:"),
-            (this.TxtFechaNacimiento, "Fecha de Nacimiento:"),
-            (this.TxtSexo, "Sexo:"),
-            (this.TxtEntidadNacimiento, "Entidad de Nacimiento:"),
-            (this.TxtEntidadRegistro, "Entidad de Registro:")      
+            (this.TxtNombres, "NOMBRE(S):"),
+            (this.TxtApellidoPaterno, "PRIMER APELLIDO:"),
+            (this.TxtApellidoMaterno, "SEGUNDO APELLIDO:"),
+            (this.TxtFechaNacimiento, "FECHA DE NACIMIENTO:"),
+            (this.TxtSexo, "SEXO:"),
+            (this.TxtEntidadNacimiento, "ENTIDAD DE NACIMIENTO:"),
+            (this.TxtEntidadRegistro, "ENTIDAD DE REGISTRO:")      
      };
 
             int yActual = posYInicial;
@@ -125,8 +125,8 @@ namespace SIPABE_DIFGRO_FAH
                     yActual + espacioAntesBoton
                 );
 
-                this.BtnRegistrar.Text = "Registrar";
-                this.BtnRegistrar.Font = new Font("Segoe UI", 20f, FontStyle.Bold);
+                this.BtnRegistrar.Text = "REGISTRAR";
+                this.BtnRegistrar.Font = new Font("Segoe UI", 18f, FontStyle.Bold);
                 this.BtnRegistrar.PrimaryColor = ColorBeige;
                 this.BtnRegistrar.TextColor = ColorVinoPrincipal;
                 this.BtnRegistrar.BorderColor = ColorDorado;

@@ -81,8 +81,8 @@ namespace SIPABE_DIFGRO_FAH
             }
 
             // 3. Posicionar botones CONSULTAR y SALIR
-            int anchoBoton = 190;
-            int altoBoton = 52;
+            int anchoBoton = 260;
+            int altoBoton = 70;
             int separacionBotones = 30;
             int posYBotones = 230; // Bajamos los botones proporcionalmente
 
@@ -93,7 +93,7 @@ namespace SIPABE_DIFGRO_FAH
             if (this.btnConsultarBeneficiario != null)
             {
                 this.btnConsultarBeneficiario.Text = "CONSULTAR";
-                this.btnConsultarBeneficiario.Font = new Font("Segoe UI", 14f, FontStyle.Bold);
+                this.btnConsultarBeneficiario.Font = new Font("Segoe UI", 16f, FontStyle.Bold);
                 this.btnConsultarBeneficiario.Size = new Size(anchoBoton, altoBoton);
                 this.btnConsultarBeneficiario.Location = new Point(posXInicio, posYBotones);
                 this.btnConsultarBeneficiario.PrimaryColor = ColorBeige;
@@ -107,7 +107,7 @@ namespace SIPABE_DIFGRO_FAH
             if (this.btnExit != null)
             {
                 this.btnExit.Text = "SALIR";
-                this.btnExit.Font = new Font("Segoe UI", 14f, FontStyle.Bold);
+                this.btnExit.Font = new Font("Segoe UI", 16f, FontStyle.Bold);
                 this.btnExit.Size = new Size(anchoBoton, altoBoton);
                 this.btnExit.Location = new Point(posXInicio + anchoBoton + separacionBotones, posYBotones);
                 this.btnExit.PrimaryColor = ColorBeige;

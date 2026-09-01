@@ -26,6 +26,14 @@ namespace SIPABE_DIFGRO_FAH
         {
             InitializeComponent();
 
+            this.StartPosition = FormStartPosition.CenterScreen;
+
+            // Asegura el recentrado al lanzarse
+            this.Load += (s, e) =>
+            {
+                this.CenterToScreen();
+            };
+
             // 1. Configuración de LostForm
             this.Text = string.Empty;
             this.Image = null;
@@ -72,6 +80,13 @@ namespace SIPABE_DIFGRO_FAH
 
             if (this.txtCurpBeneficiario != null)
             {
+                foreach (Control c in this.txtCurpBeneficiario.Controls)
+                {
+                    if (c is TextBox txtInterno)
+                    {
+                        txtInterno.TextAlign = HorizontalAlignment.Center;
+                    }
+                }
                 this.txtCurpBeneficiario.Size = new Size(anchoCaja, altoCaja);
                 this.txtCurpBeneficiario.Location = new Point(
                     (this.ClientSize.Width - anchoCaja) / 2,
@@ -83,13 +98,13 @@ namespace SIPABE_DIFGRO_FAH
                 this.txtCurpBeneficiario.BorderColorA = ColorDorado;
                 this.txtCurpBeneficiario.BorderColorB = ColorBordeSuave;
                 this.txtCurpBeneficiario.ForeColor = ColorVinoPrincipal;
-                this.txtCurpBeneficiario.Font = new Font("Segoe UI", 12f, FontStyle.Bold);
+                this.txtCurpBeneficiario.Font = new Font("Segoe UI", 14f, FontStyle.Bold);
                 this.txtCurpBeneficiario.Hint = string.Empty;
             }
 
             // 3. Botones CONSULTAR y REGRESAR
-            int anchoBoton = 175;
-            int altoBoton = 48;
+            int anchoBoton = 260;
+            int altoBoton = 60;
             int separacionBotones = 30;
             int posYBotones = 220;
 
@@ -100,7 +115,7 @@ namespace SIPABE_DIFGRO_FAH
             if (this.btnConsultar != null)
             {
                 this.btnConsultar.Text = "CONSULTAR";
-                this.btnConsultar.Font = new Font("Segoe UI", 11f, FontStyle.Bold);
+                this.btnConsultar.Font = new Font("Segoe UI", 16f, FontStyle.Bold);
                 this.btnConsultar.Size = new Size(anchoBoton, altoBoton);
                 this.btnConsultar.Location = new Point(posXInicio, posYBotones);
                 this.btnConsultar.PrimaryColor = ColorBeige;
@@ -114,7 +129,7 @@ namespace SIPABE_DIFGRO_FAH
             if (this.btnRegresar != null)
             {
                 this.btnRegresar.Text = "REGRESAR";
-                this.btnRegresar.Font = new Font("Segoe UI", 11f, FontStyle.Bold);
+                this.btnRegresar.Font = new Font("Segoe UI", 16f, FontStyle.Bold);
                 this.btnRegresar.Size = new Size(anchoBoton, altoBoton);
                 this.btnRegresar.Location = new Point(posXInicio + anchoBoton + separacionBotones, posYBotones);
                 this.btnRegresar.PrimaryColor = ColorBeige;

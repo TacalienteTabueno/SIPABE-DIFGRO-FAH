@@ -64,7 +64,7 @@ namespace SIPABE_DIFGRO_FAH
             this.Btn_Login.Size = new System.Drawing.Size(280, 47);
             this.Btn_Login.SuccessColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(194)))), ((int)(((byte)(58)))));
             this.Btn_Login.TabIndex = 0;
-            this.Btn_Login.Text = "Ingresar";
+            this.Btn_Login.Text = "INGRESAR";
             this.Btn_Login.TextColor = System.Drawing.Color.White;
             this.Btn_Login.WarningColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(162)))), ((int)(((byte)(60)))));
             this.Btn_Login.Click += new System.EventHandler(this.Btn_Login_Click);

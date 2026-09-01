@@ -117,7 +117,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(713, 399);
+            this.ClientSize = new System.Drawing.Size(713, 345);
             this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.btnConsultar);
             this.Controls.Add(this.txtCurpBeneficiario);

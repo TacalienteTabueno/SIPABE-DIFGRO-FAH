@@ -51,6 +51,7 @@ namespace SIPABE_DIFGRO_FAH
                 this.Btn_Login.TextColor = Color.FromArgb(88, 17, 26);
                 this.Btn_Login.BorderColor = Color.FromArgb(197, 160, 89);    // Borde dorado suave
                 this.Btn_Login.HoverTextColor = Color.FromArgb(197, 160, 89);
+                this.Btn_Login.Font = new Font("Segoe UI", 18f, FontStyle.Bold);
             this.Btn_Login.Cursor = Cursors.Hand;
 
             EstilizarTextBox(this.Txt_User, "Usuario");
