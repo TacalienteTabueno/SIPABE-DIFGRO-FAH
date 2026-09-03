@@ -1,4 +1,4 @@
-﻿using ReaLTaiizor.Controls;
+﻿ using ReaLTaiizor.Controls;
 using ReaLTaiizor.Forms;
 using System;
 using System.Collections.Generic;
@@ -112,21 +112,22 @@ namespace SIPABE_DIFGRO_FAH
 
                 }
             }
+            int anchoBoton = 200;           // Ancho adecuado para que quepan lado a lado
+            int altoBoton = 46;
+            int separacionBotones = 25;     // Espacio entre ambos botones
+            int espacioAntesBoton = 20;
+            int posYBotones = yActual + espacioAntesBoton;
+
+            // Cálculo para centrar el bloque de los dos botones
+            int anchoTotalGrupo = (anchoBoton * 2) + separacionBotones;
+            int posXInicio = (this.ClientSize.Width - anchoTotalGrupo) / 2;
 
             if (this.BtnRegistrar != null)
             {
-                int anchoBoton = 320;
-                int altoBoton = 44;
-                int espacioAntesBoton = 18;
-
                 this.BtnRegistrar.Size = new Size(anchoBoton, altoBoton);
-                this.BtnRegistrar.Location = new Point(
-                    (this.ClientSize.Width - anchoBoton) / 2,
-                    yActual + espacioAntesBoton
-                );
-
+                this.BtnRegistrar.Location = new Point(posXInicio, posYBotones);
                 this.BtnRegistrar.Text = "REGISTRAR";
-                this.BtnRegistrar.Font = new Font("Segoe UI", 18f, FontStyle.Bold);
+                this.BtnRegistrar.Font = new Font("Segoe UI", 13f, FontStyle.Bold);
                 this.BtnRegistrar.PrimaryColor = ColorBeige;
                 this.BtnRegistrar.TextColor = ColorVinoPrincipal;
                 this.BtnRegistrar.BorderColor = ColorDorado;
@@ -139,6 +140,21 @@ namespace SIPABE_DIFGRO_FAH
                 this.TxtQR.Visible = true;                   // Mantiene la capacidad de recibir foco
                 this.TxtQR.Location = new Point(-2000, -2000); // Se envía fuera del área visible
                 this.TxtQR.Size = new Size(100, 30);
+            }
+
+
+            if (this.BtnRegresar != null)
+            {
+                this.BtnRegresar.Size = new Size(anchoBoton, altoBoton);
+                this.BtnRegresar.Location = new Point(posXInicio + anchoBoton + separacionBotones, posYBotones);
+                this.BtnRegresar.Text = "REGRESAR";
+                this.BtnRegresar.Font = new Font("Segoe UI", 13f, FontStyle.Bold);
+                this.BtnRegresar.PrimaryColor = ColorBeige;
+                this.BtnRegresar.TextColor = ColorVinoPrincipal;
+                this.BtnRegresar.BorderColor = ColorDorado;
+                this.BtnRegresar.HoverTextColor = ColorDorado;
+                this.BtnRegresar.Cursor = Cursors.Hand;
+                this.BtnRegresar.BringToFront();
             }
         }
 
@@ -260,6 +276,27 @@ namespace SIPABE_DIFGRO_FAH
         private void TxtQR_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void BtnRegistrar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // 1. Instanciar el menú principal
+            MenuPrincipalForm menu = new MenuPrincipalForm();
+
+            // 2. Asegurar que aparezca centrado en pantalla
+            menu.StartPosition = FormStartPosition.CenterScreen;
+
+            // 3. Mostrar el menú
+            menu.Show();
+          
+
+            // 4. Cerrar la ventana actual
+            this.Close();
         }
     }
 }

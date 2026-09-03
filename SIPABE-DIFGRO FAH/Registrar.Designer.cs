@@ -39,6 +39,7 @@
             this.TxtFechaNacimiento = new ReaLTaiizor.Controls.HopeTextBox();
             this.TxtSexo = new ReaLTaiizor.Controls.HopeTextBox();
             this.BtnRegistrar = new ReaLTaiizor.Controls.HopeButton();
+            this.BtnRegresar = new ReaLTaiizor.Controls.HopeButton();
             this.SuspendLayout();
             // 
             // TxtCurp
@@ -302,11 +303,23 @@
             this.BtnRegistrar.Text = "REGISTRAR";
             this.BtnRegistrar.TextColor = System.Drawing.Color.White;
             this.BtnRegistrar.WarningColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(162)))), ((int)(((byte)(60)))));
+            this.BtnRegistrar.Click += new System.EventHandler(this.BtnRegistrar_Click);
+            // 
+            // BtnRegresar
+            // 
+            this.BtnRegresar.Location = new System.Drawing.Point(446, 396);
+            this.BtnRegresar.Name = "BtnRegresar";
+            this.BtnRegresar.Size = new System.Drawing.Size(108, 42);
+            this.BtnRegresar.TabIndex = 11;
+            this.BtnRegresar.Text = "REGRESAR";
+            //this.BtnRegresar.UseVisualStyleBackColor = true;
+            this.BtnRegresar.Click += new System.EventHandler(this.button1_Click);
             // 
             // Registrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.ClientSize = new System.Drawing.Size(597, 510);
+            this.Controls.Add(this.BtnRegresar);
             this.Controls.Add(this.BtnRegistrar);
             this.Controls.Add(this.TxtSexo);
             this.Controls.Add(this.TxtFechaNacimiento);
@@ -348,5 +361,6 @@
         private ReaLTaiizor.Controls.HopeTextBox TxtFechaNacimiento;
         private ReaLTaiizor.Controls.HopeTextBox TxtSexo;
         private ReaLTaiizor.Controls.HopeButton BtnRegistrar;
+        private ReaLTaiizor.Controls.HopeButton BtnRegresar;
     }
 }
