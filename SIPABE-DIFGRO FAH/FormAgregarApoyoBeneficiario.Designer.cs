@@ -51,11 +51,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.comboEstadoCivil = new System.Windows.Forms.ComboBox();
+            this.sIPABE_DIF_GR0DataSet = new SIPABE_DIFGRO_FAH.SIPABE_DIF_GR0DataSet();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.comboIndigena = new System.Windows.Forms.ComboBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.comboDiscapacidad = new System.Windows.Forms.ComboBox();
+            this.catDiscapacidadBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.comboMigrante = new System.Windows.Forms.ComboBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -64,8 +66,6 @@
             this.comboAfrodescendiente = new System.Windows.Forms.ComboBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.comboVulnerabilidad = new System.Windows.Forms.ComboBox();
-            this.catDiscapacidadBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.sIPABE_DIF_GR0DataSet = new SIPABE_DIFGRO_FAH.SIPABE_DIF_GR0DataSet();
             this.sIPABEDIFGR0DataSetBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.sIPABEDIFGR0DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bENEFICIARIOBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -75,8 +75,8 @@
             this.cat_IndigenaTableAdapter = new SIPABE_DIFGRO_FAH.SIPABE_DIF_GR0DataSetTableAdapters.Cat_IndigenaTableAdapter();
             this.tableAdapterManager = new SIPABE_DIFGRO_FAH.SIPABE_DIF_GR0DataSetTableAdapters.TableAdapterManager();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.catDiscapacidadBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sIPABE_DIF_GR0DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.catDiscapacidadBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sIPABEDIFGR0DataSetBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sIPABEDIFGR0DataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bENEFICIARIOBindingSource)).BeginInit();
@@ -253,21 +253,25 @@
             // 
             // btnActualizar
             // 
+            this.btnActualizar.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.btnActualizar.ForeColor = System.Drawing.Color.White;
             this.btnActualizar.Location = new System.Drawing.Point(1085, 53);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(160, 76);
             this.btnActualizar.TabIndex = 24;
             this.btnActualizar.Text = "ACTUALIZAR";
-            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.UseVisualStyleBackColor = false;
             // 
             // btnRegresarMenu
             // 
+            this.btnRegresarMenu.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.btnRegresarMenu.ForeColor = System.Drawing.Color.White;
             this.btnRegresarMenu.Location = new System.Drawing.Point(1085, 145);
             this.btnRegresarMenu.Name = "btnRegresarMenu";
             this.btnRegresarMenu.Size = new System.Drawing.Size(160, 76);
             this.btnRegresarMenu.TabIndex = 25;
             this.btnRegresarMenu.Text = "REGRESAR AL MENÚ PRINCIPAL";
-            this.btnRegresarMenu.UseVisualStyleBackColor = true;
+            this.btnRegresarMenu.UseVisualStyleBackColor = false;
             this.btnRegresarMenu.Click += new System.EventHandler(this.btnRegresarMenu_Click);
             // 
             // panel1
@@ -292,7 +296,7 @@
             this.panel1.Controls.Add(this.textBox15);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1038, 230);
+            this.panel1.Size = new System.Drawing.Size(1041, 230);
             this.panel1.TabIndex = 26;
             // 
             // label1
@@ -316,6 +320,11 @@
             this.comboEstadoCivil.Name = "comboEstadoCivil";
             this.comboEstadoCivil.Size = new System.Drawing.Size(210, 33);
             this.comboEstadoCivil.TabIndex = 27;
+            // 
+            // sIPABE_DIF_GR0DataSet
+            // 
+            this.sIPABE_DIF_GR0DataSet.DataSetName = "SIPABE_DIF_GR0DataSet";
+            this.sIPABE_DIF_GR0DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // textBox1
             // 
@@ -366,6 +375,11 @@
             this.comboDiscapacidad.Name = "comboDiscapacidad";
             this.comboDiscapacidad.Size = new System.Drawing.Size(210, 33);
             this.comboDiscapacidad.TabIndex = 31;
+            // 
+            // catDiscapacidadBindingSource1
+            // 
+            this.catDiscapacidadBindingSource1.DataMember = "Cat_Discapacidad";
+            this.catDiscapacidadBindingSource1.DataSource = this.sIPABE_DIF_GR0DataSet;
             // 
             // textBox4
             // 
@@ -442,16 +456,6 @@
             this.comboVulnerabilidad.Name = "comboVulnerabilidad";
             this.comboVulnerabilidad.Size = new System.Drawing.Size(210, 33);
             this.comboVulnerabilidad.TabIndex = 35;
-            // 
-            // catDiscapacidadBindingSource1
-            // 
-            this.catDiscapacidadBindingSource1.DataMember = "Cat_Discapacidad";
-            this.catDiscapacidadBindingSource1.DataSource = this.sIPABE_DIF_GR0DataSet;
-            // 
-            // sIPABE_DIF_GR0DataSet
-            // 
-            this.sIPABE_DIF_GR0DataSet.DataSetName = "SIPABE_DIF_GR0DataSet";
-            this.sIPABE_DIF_GR0DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // sIPABEDIFGR0DataSetBindingSource1
             // 
@@ -544,8 +548,8 @@
             this.Text = "Agregar apoyo al beneficiario";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.catDiscapacidadBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sIPABE_DIF_GR0DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.catDiscapacidadBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sIPABEDIFGR0DataSetBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sIPABEDIFGR0DataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bENEFICIARIOBindingSource)).EndInit();

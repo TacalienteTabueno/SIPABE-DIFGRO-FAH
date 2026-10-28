@@ -60,7 +60,7 @@ namespace SIPABE_DIFGRO_FAH
             this.Btn_Login.InfoColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(147)))), ((int)(((byte)(153)))));
             this.Btn_Login.Location = new System.Drawing.Point(96, 432);
             this.Btn_Login.Name = "Btn_Login";
-            this.Btn_Login.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(158)))), ((int)(((byte)(255)))));
+            this.Btn_Login.PrimaryColor = System.Drawing.Color.DarkGoldenrod;
             this.Btn_Login.Size = new System.Drawing.Size(280, 47);
             this.Btn_Login.SuccessColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(194)))), ((int)(((byte)(58)))));
             this.Btn_Login.TabIndex = 0;
@@ -165,7 +165,8 @@ namespace SIPABE_DIFGRO_FAH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Maroon;
+            this.BackColor = System.Drawing.Color.DarkRed;
+            this.BorderColor = System.Drawing.Color.DarkRed;
             this.ClientSize = new System.Drawing.Size(471, 508);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
@@ -173,6 +174,8 @@ namespace SIPABE_DIFGRO_FAH
             this.Controls.Add(this.Txt_Pass);
             this.Controls.Add(this.Txt_User);
             this.Controls.Add(this.Btn_Login);
+            this.HeaderColor = System.Drawing.Color.Maroon;
+            this.Image = null;
             this.Name = "LoginForm";
             this.Text = " ";
             this.Load += new System.EventHandler(this.Form1_Load);

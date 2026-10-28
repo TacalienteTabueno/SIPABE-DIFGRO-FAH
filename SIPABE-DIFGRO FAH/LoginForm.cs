@@ -155,7 +155,7 @@ namespace SIPABE_DIFGRO_FAH
                 // asi que hay que revisar tambien esta parte y despues cambiarlo si es menester
                 if (ex.Number == 18456)
                 {
-                    MessageBox.Show("Usuario o contraseña incorrectos, porfa checa si escribiste bien, con calma y cuidado TKM. Recuerda que tu no tienes enemigos, nadie tiene enemigos, nadie en este mundo merece ser herido", "Error de Autenticación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Usuario o contraseña incorrectos", "Error de Autenticación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {

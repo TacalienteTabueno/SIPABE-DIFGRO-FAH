@@ -1,4 +1,4 @@
-﻿ using ReaLTaiizor.Controls;
+﻿  using ReaLTaiizor.Controls;
 using ReaLTaiizor.Forms;
 using System;
 using System.Collections.Generic;
@@ -112,8 +112,8 @@ namespace SIPABE_DIFGRO_FAH
 
                 }
             }
-            int anchoBoton = 200;           // Ancho adecuado para que quepan lado a lado
-            int altoBoton = 46;
+            int anchoBoton = 240;           // Ancho adecuado para que quepan lado a lado
+            int altoBoton = 48;
             int separacionBotones = 25;     // Espacio entre ambos botones
             int espacioAntesBoton = 20;
             int posYBotones = yActual + espacioAntesBoton;
@@ -127,7 +127,7 @@ namespace SIPABE_DIFGRO_FAH
                 this.BtnRegistrar.Size = new Size(anchoBoton, altoBoton);
                 this.BtnRegistrar.Location = new Point(posXInicio, posYBotones);
                 this.BtnRegistrar.Text = "REGISTRAR";
-                this.BtnRegistrar.Font = new Font("Segoe UI", 13f, FontStyle.Bold);
+                this.BtnRegistrar.Font = new Font("Segoe UI", 16f, FontStyle.Bold);
                 this.BtnRegistrar.PrimaryColor = ColorBeige;
                 this.BtnRegistrar.TextColor = ColorVinoPrincipal;
                 this.BtnRegistrar.BorderColor = ColorDorado;
@@ -148,7 +148,7 @@ namespace SIPABE_DIFGRO_FAH
                 this.BtnRegresar.Size = new Size(anchoBoton, altoBoton);
                 this.BtnRegresar.Location = new Point(posXInicio + anchoBoton + separacionBotones, posYBotones);
                 this.BtnRegresar.Text = "REGRESAR";
-                this.BtnRegresar.Font = new Font("Segoe UI", 13f, FontStyle.Bold);
+                this.BtnRegresar.Font = new Font("Segoe UI", 16f, FontStyle.Bold);
                 this.BtnRegresar.PrimaryColor = ColorBeige;
                 this.BtnRegresar.TextColor = ColorVinoPrincipal;
                 this.BtnRegresar.BorderColor = ColorDorado;

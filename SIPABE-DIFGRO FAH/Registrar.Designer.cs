@@ -173,7 +173,7 @@
             this.TxtQR.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.TxtQR.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
             this.TxtQR.Hint = "";
-            this.TxtQR.Location = new System.Drawing.Point(22, 30);
+            this.TxtQR.Location = new System.Drawing.Point(21, 39);
             this.TxtQR.MaxLength = 32767;
             this.TxtQR.Multiline = false;
             this.TxtQR.Name = "TxtQR";
@@ -289,16 +289,16 @@
             this.BtnRegistrar.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(223)))), ((int)(((byte)(230)))));
             this.BtnRegistrar.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
             this.BtnRegistrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnRegistrar.DangerColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(108)))), ((int)(((byte)(108)))));
+            this.BtnRegistrar.DangerColor = System.Drawing.Color.White;
             this.BtnRegistrar.DefaultColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.BtnRegistrar.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.BtnRegistrar.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
             this.BtnRegistrar.InfoColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(147)))), ((int)(((byte)(153)))));
-            this.BtnRegistrar.Location = new System.Drawing.Point(297, 396);
+            this.BtnRegistrar.Location = new System.Drawing.Point(221, 396);
             this.BtnRegistrar.Name = "BtnRegistrar";
-            this.BtnRegistrar.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(158)))), ((int)(((byte)(255)))));
+            this.BtnRegistrar.PrimaryColor = System.Drawing.Color.DarkGoldenrod;
             this.BtnRegistrar.Size = new System.Drawing.Size(123, 42);
-            this.BtnRegistrar.SuccessColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(194)))), ((int)(((byte)(58)))));
+            this.BtnRegistrar.SuccessColor = System.Drawing.Color.Maroon;
             this.BtnRegistrar.TabIndex = 10;
             this.BtnRegistrar.Text = "REGISTRAR";
             this.BtnRegistrar.TextColor = System.Drawing.Color.White;
@@ -307,17 +307,30 @@
             // 
             // BtnRegresar
             // 
-            this.BtnRegresar.Location = new System.Drawing.Point(446, 396);
+            this.BtnRegresar.BorderColor = System.Drawing.Color.White;
+            this.BtnRegresar.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            this.BtnRegresar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnRegresar.DangerColor = System.Drawing.Color.White;
+            this.BtnRegresar.DefaultColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.BtnRegresar.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.BtnRegresar.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
+            this.BtnRegresar.InfoColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(147)))), ((int)(((byte)(153)))));
+            this.BtnRegresar.Location = new System.Drawing.Point(422, 396);
             this.BtnRegresar.Name = "BtnRegresar";
+            this.BtnRegresar.PrimaryColor = System.Drawing.Color.DarkGoldenrod;
             this.BtnRegresar.Size = new System.Drawing.Size(108, 42);
+            this.BtnRegresar.SuccessColor = System.Drawing.Color.Maroon;
             this.BtnRegresar.TabIndex = 11;
             this.BtnRegresar.Text = "REGRESAR";
-            //this.BtnRegresar.UseVisualStyleBackColor = true;
+            this.BtnRegresar.TextColor = System.Drawing.Color.White;
+            this.BtnRegresar.WarningColor = System.Drawing.Color.Maroon;
             this.BtnRegresar.Click += new System.EventHandler(this.button1_Click);
             // 
             // Registrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.BackColor = System.Drawing.Color.Maroon;
+            this.BorderColor = System.Drawing.Color.DarkRed;
             this.ClientSize = new System.Drawing.Size(597, 510);
             this.Controls.Add(this.BtnRegresar);
             this.Controls.Add(this.BtnRegistrar);
@@ -331,6 +344,9 @@
             this.Controls.Add(this.TxtApellidoMaterno);
             this.Controls.Add(this.TxtNombres);
             this.Controls.Add(this.TxtCurp);
+            this.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HeaderColor = System.Drawing.Color.Maroon;
+            this.Image = null;
             this.Name = "Registrar";
             this.ResumeLayout(false);
 

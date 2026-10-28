@@ -346,5 +346,10 @@ namespace SIPABE_DIFGRO_FAH
         {
 
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
