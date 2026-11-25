@@ -25,7 +25,10 @@ namespace SIPABE_DIFGRO_FAH
 
         private object[] datosBeneficiarioGlobal;
 
-        public FormMenuUsuarioEncontrado(object[] datosBeneficiario)
+        private BeneficiarioItem beneficiario;
+
+
+        public FormMenuUsuarioEncontrado(/*object[] datosBeneficiario*/ BeneficiarioItem beneficiarioItem)
         {
             InitializeComponent();
 
@@ -38,12 +41,22 @@ namespace SIPABE_DIFGRO_FAH
 
             ConfigurarDiseñoUsuarioEncontrado();
 
-            this.datosBeneficiarioGlobal = datosBeneficiario;
+            //this.datosBeneficiarioGlobal = datosBeneficiario;
+            this.beneficiario = beneficiarioItem;
 
             // Aquí puedes usar los datos para llenar los controles
-            lblCurp.Text = datosBeneficiario[0].ToString();
-            lblNombreCompleto.Text = datosBeneficiario[3].ToString() + " " + datosBeneficiario[4].ToString() + " " + datosBeneficiario[5].ToString();
+            //           lblCurp.Text = datosBeneficiario[0].ToString();
+            //           lblNombreCompleto.Text = datosBeneficiario[3].ToString() + " " + datosBeneficiario[4].ToString() + " " + datosBeneficiario[5].ToString();
+
+            lblCurp.Text = beneficiario.id_curp_beneficiario;
+            lblNombreCompleto.Text = beneficiario.nombre_beneficiario + " " + beneficiario.primer_apellido_beneficiario + " " + beneficiario.segundo_apellido_beneficiario;
+
+
+
+
         }
+
+
 
         private void ConfigurarDiseñoUsuarioEncontrado()
         {
@@ -127,7 +140,8 @@ namespace SIPABE_DIFGRO_FAH
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            FormAgregarApoyoBeneficiario formAgregarApoyoBeneficiario = new FormAgregarApoyoBeneficiario(this.datosBeneficiarioGlobal);
+            //FormAgregarApoyoBeneficiario formAgregarApoyoBeneficiario = new FormAgregarApoyoBeneficiario(this.datosBeneficiarioGlobal);
+            FormAgregarApoyoBeneficiario formAgregarApoyoBeneficiario = new FormAgregarApoyoBeneficiario(beneficiario);
             formAgregarApoyoBeneficiario.Show();
             this.Close();
         }

@@ -165,6 +165,7 @@
       <DependentUpon>BeneficiarioForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Auditor.cs" />
+    <Compile Include="BeneficiarioItem.cs" />
     <Compile Include="Consultar1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,6 +191,7 @@
     <Compile Include="FormMenuUsuarioEncontrado.Designer.cs">
       <DependentUpon>FormMenuUsuarioEncontrado.cs</DependentUpon>
     </Compile>
+    <Compile Include="IndigenaItem.cs" />
     <Compile Include="Registrar.cs">
       <SubType>Form</SubType>
     </Compile>

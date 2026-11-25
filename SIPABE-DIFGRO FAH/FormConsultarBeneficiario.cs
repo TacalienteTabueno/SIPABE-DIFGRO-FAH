@@ -279,16 +279,78 @@ namespace SIPABE_DIFGRO_FAH
                         {
                             if (reader.Read())
                             {
-                                // Crear un array con todos los campos
-                                object[] datosBeneficiario = new object[reader.FieldCount];
-                                reader.GetValues(datosBeneficiario);
+                                // Crear el objeto BeneficiarioItem a partir del lector
+                                BeneficiarioItem beneficiario = new BeneficiarioItem
+                                {
+                                    id_beneficiario = reader["id_beneficiario"] == DBNull.Value ? 0 : Convert.ToInt32(reader["id_beneficiario"]),
+                                    id_curp_beneficiario = reader["id_curp_beneficiario"] == DBNull.Value ? null : reader["id_curp_beneficiario"].ToString(),
+                                    QR_CURP = reader["QR_CURP"] == DBNull.Value ? null : reader["QR_CURP"].ToString(),
+                                    NADA = reader["NADA"] == DBNull.Value ? null : reader["NADA"].ToString(),
+                                    nombre_beneficiario = reader["nombre_beneficiario"] == DBNull.Value ? null : reader["nombre_beneficiario"].ToString(),
+                                    primer_apellido_beneficiario = reader["primer_apellido_beneficiario"] == DBNull.Value ? null : reader["primer_apellido_beneficiario"].ToString(),
+                                    segundo_apellido_beneficiario = reader["segundo_apellido_beneficiario"] == DBNull.Value ? null : reader["segundo_apellido_beneficiario"].ToString(),
+                                    fecha_nacimiento_invert = reader["fecha_nacimiento_invert"] == DBNull.Value ? (int?)null : Convert.ToInt32(reader["fecha_nacimiento_invert"]),
+                                    fecha_nacimiento = reader["fecha_nacimiento"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["fecha_nacimiento"]),
+                                    nom_ent_fed_nac = reader["nom_ent_fed_nac"] == DBNull.Value ? null : reader["nom_ent_fed_nac"].ToString(),
+                                    cve_ent_fed_reg = reader["cve_ent_fed_reg"] == DBNull.Value ? null : reader["cve_ent_fed_reg"].ToString(),
+                                    sexo = reader["sexo"] == DBNull.Value ? null : reader["sexo"].ToString(),
+                                    discapacidad = reader["discapacidad"] == DBNull.Value ? null : reader["discapacidad"].ToString(),
+                                    indigena = reader["indigena"] == DBNull.Value ? null : reader["indigena"].ToString(),
+                                    cve_civil = reader["cve_civil"] == DBNull.Value ? null : reader["cve_civil"].ToString(),
+                                    afrodescendiente = reader["afrodescendiente"] == DBNull.Value ? null : reader["afrodescendiente"].ToString(),
+                                    migrante = reader["migrante"] == DBNull.Value ? null : reader["migrante"].ToString(),
+                                    vulnerabilidad = reader["vulnerabilidad"] == DBNull.Value ? null : reader["vulnerabilidad"].ToString(),
+                                    tipo_discapacidad = reader["tipo_discapacidad"] == DBNull.Value ? null : reader["tipo_discapacidad"].ToString(),
+                                    tipo_vialidad = reader["tipo_vialidad"] == DBNull.Value ? null : reader["tipo_vialidad"].ToString(),
+                                    nom_vialidad = reader["nom_vialidad"] == DBNull.Value ? null : reader["nom_vialidad"].ToString(),
+                                    carretera = reader["carretera"] == DBNull.Value ? null : reader["carretera"].ToString(),
+                                    camino = reader["camino"] == DBNull.Value ? null : reader["camino"].ToString(),
+                                    num_ext_1 = reader["num_ext_1"] == DBNull.Value ? 0 : Convert.ToInt32(reader["num_ext_1"]),
+                                    num_ext_2 = reader["num_ext_2"] == DBNull.Value ? 0 : Convert.ToInt32(reader["num_ext_2"]),
+                                    num_ext_alf_1 = reader["num_ext_alf_1"] == DBNull.Value ? null : reader["num_ext_alf_1"].ToString(),
+                                    num_int_num = reader["num_int_num"] == DBNull.Value ? 0 : Convert.ToInt32(reader["num_int_num"]),
+                                    num_int_alf = reader["num_int_alf"] == DBNull.Value ? null : reader["num_int_alf"].ToString(),
+                                    tipo_asen = reader["tipo_asen"] == DBNull.Value ? null : reader["tipo_asen"].ToString(),
+                                    nom_asen = reader["nom_asen"] == DBNull.Value ? null : reader["nom_asen"].ToString(),
+                                    cp = reader["cp"] == DBNull.Value ? 0 : Convert.ToInt32(reader["cp"]),
+                                    nom_loc = reader["nom_loc"] == DBNull.Value ? null : reader["nom_loc"].ToString(),
+                                    cve_loc = reader["cve_loc"] == DBNull.Value ? null : reader["cve_loc"].ToString(),
+                                    cve_loc_id = reader["cve_loc_id"] == DBNull.Value ? null : reader["cve_loc_id"].ToString(),
+                                    nom_mun = reader["nom_mun"] == DBNull.Value ? null : reader["nom_mun"].ToString(),
+                                    region = reader["region"] == DBNull.Value ? null : reader["region"].ToString(),
+                                    cve_mun = reader["cve_mun"] == DBNull.Value ? null : reader["cve_mun"].ToString(),
+                                    nom_ent = reader["nom_ent"] == DBNull.Value ? null : reader["nom_ent"].ToString(),
+                                    cve_ent = reader["cve_ent"] == DBNull.Value ? null : reader["cve_ent"].ToString(),
+                                    tipo_ref_1 = reader["tipo_ref_1"] == DBNull.Value ? null : reader["tipo_ref_1"].ToString(),
+                                    nom_ref_1 = reader["nom_ref_1"] == DBNull.Value ? null : reader["nom_ref_1"].ToString(),
+                                    tipo_ref_2 = reader["tipo_ref_2"] == DBNull.Value ? null : reader["tipo_ref_2"].ToString(),
+                                    nom_ref_2 = reader["nom_ref_2"] == DBNull.Value ? null : reader["nom_ref_2"].ToString(),
+                                    tipo_ref_3 = reader["tipo_ref_3"] == DBNull.Value ? null : reader["tipo_ref_3"].ToString(),
+                                    nom_ref_3 = reader["nom_ref_3"] == DBNull.Value ? null : reader["nom_ref_3"].ToString(),
+                                    descr_ubic = reader["descr_ubic"] == DBNull.Value ? null : reader["descr_ubic"].ToString(),
+                                    ID_ESCUELA = reader["ID_ESCUELA"] == DBNull.Value ? null : reader["ID_ESCUELA"].ToString(),
+                                    CCT = reader["CCT"] == DBNull.Value ? null : reader["CCT"].ToString(),
+                                    NOMBRE_ESCUELA = reader["NOMBRE_ESCUELA"] == DBNull.Value ? null : reader["NOMBRE_ESCUELA"].ToString(),
+                                    TURNO = reader["TURNO"] == DBNull.Value ? null : reader["TURNO"].ToString(),
+                                    MUNICIPIO = reader["MUNICIPIO"] == DBNull.Value ? null : reader["MUNICIPIO"].ToString(),
+                                    LOCALIDAD = reader["LOCALIDAD"] == DBNull.Value ? null : reader["LOCALIDAD"].ToString(),
+                                    TIPO = reader["TIPO"] == DBNull.Value ? null : reader["TIPO"].ToString(),
+                                    NIVEL = reader["NIVEL"] == DBNull.Value ? null : reader["NIVEL"].ToString(),
+                                    SUBNIVEL = reader["SUBNIVEL"] == DBNull.Value ? null : reader["SUBNIVEL"].ToString(),
+                                    GRADO = reader["GRADO"] == DBNull.Value ? null : reader["GRADO"].ToString(),
+                                    creador = reader["creador"] == DBNull.Value ? null : reader["creador"].ToString(),
+                                    fecha_registro_sipabe = reader["fecha_registro_sipabe"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["fecha_registro_sipabe"]),
+                                    validado_RENAPO = reader["validado_RENAPO"] == DBNull.Value ? null : reader["validado_RENAPO"].ToString(),
+                                    estatus_vital = reader["estatus_vital"] == DBNull.Value ? null : reader["estatus_vital"].ToString()
+                                };
 
-                                // Guardar en una variable local (de clase)
-                                this.datosBeneficiarioGlobal = datosBeneficiario;
-
-                                FormMenuUsuarioEncontrado formMenu = new FormMenuUsuarioEncontrado(datosBeneficiario);
+                                FormMenuUsuarioEncontrado formMenu = new FormMenuUsuarioEncontrado(beneficiario);
                                 formMenu.StartPosition = FormStartPosition.CenterScreen;
                                 formMenu.Show();
+
+                                //FormMenuUsuarioEncontrado formMenu = new FormMenuUsuarioEncontrado(datosBeneficiario);
+                                //formMenu.StartPosition = FormStartPosition.CenterScreen;
+                                //formMenu.Show();
 
                                 // También puedes mostrar el primer campo (CURP) como confirmación
                                 // MessageBox.Show($"Beneficiario encontrado: {datosBeneficiario[0]}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);

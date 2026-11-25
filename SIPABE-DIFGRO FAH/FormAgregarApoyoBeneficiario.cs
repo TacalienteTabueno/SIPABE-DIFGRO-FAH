@@ -9,31 +9,59 @@ namespace SIPABE_DIFGRO_FAH
 
     public partial class FormAgregarApoyoBeneficiario : Form
     {
-        object[] datosBeneficiario;
+        
+        BeneficiarioItem beneficiario;
 
-        public FormAgregarApoyoBeneficiario(object[] datosBeneficiario)
+        public FormAgregarApoyoBeneficiario(/*object[] datosBeneficiario*/ BeneficiarioItem beneficiario)
         {
             InitializeComponent();
-            btnRegresarMenu.Text = "Regresar al menú";
-            this.datosBeneficiario = datosBeneficiario;
+            btnRegresarMenu.Text = "BACK TO MENU";
+            this.beneficiario = beneficiario;
             obtenerEstadoCivil();
+            obtenerVulnerabilidad();
             //obtenerVulnerabilidad();
             rellenarCampos();
+            
         }
 
         public void rellenarCampos()
         {
-            txtCurp.Text = datosBeneficiario[0].ToString();
-            txtNombres.Text = datosBeneficiario[3].ToString();
-            txtApellidoPaterno.Text = datosBeneficiario[4].ToString();
-            txtApellidoMaterno.Text = datosBeneficiario[5].ToString();
-            txtFechaNacimiento.Text = Convert.ToDateTime(datosBeneficiario[7]).ToString("dd/MM/yyyy");
-            txtEntidadNacimiento.Text = datosBeneficiario[8].ToString();
-            txtEntidadRegistro.Text = datosBeneficiario[9].ToString();
-            txtSexo.Text = datosBeneficiario[10].ToString();
-            comboEstadoCivil.SelectedValue = datosBeneficiario[13].ToString();
+            //Campos de la curp
+            txtCurp.Text = beneficiario.id_curp_beneficiario;
+            txtNombres.Text = beneficiario.nombre_beneficiario;
+            txtApellidoPaterno.Text = beneficiario.primer_apellido_beneficiario;
+            txtApellidoMaterno.Text = beneficiario.segundo_apellido_beneficiario;
+            txtFechaNacimiento.Text = beneficiario.fecha_nacimiento.HasValue ? beneficiario.fecha_nacimiento.Value.ToString("dd/MM/yyyy") : string.Empty;
+            txtEntidadNacimiento.Text = beneficiario.nom_ent_fed_nac;
+            txtEntidadRegistro.Text = beneficiario.cve_ent_fed_reg;
+            txtSexo.Text = beneficiario.sexo;
 
-            
+            //Campos de la persona
+            if (!string.IsNullOrWhiteSpace(beneficiario.cve_civil))
+            {
+                comboEstadoCivil.SelectedValue = beneficiario.cve_civil.Trim(); // quita espacios si en SQL Server es char(n)
+            }
+            else
+            {
+                comboEstadoCivil.SelectedIndex = 0; // vuelve a "Seleccione..."
+            }
+
+            string vulnerabilidadBuscada = beneficiario.vulnerabilidad?.Trim() ?? string.Empty;
+            comboVulnerabilidad.SelectedIndex = 0; // "-- Seleccione --" por defecto
+
+            if (!string.IsNullOrWhiteSpace(vulnerabilidadBuscada))
+            {
+                for (int i = 0; i < comboVulnerabilidad.Items.Count; i++)
+                {
+                    if (comboVulnerabilidad.Items[i] is VulnerabilidadItem item &&
+                        string.Equals(item.Descripcion?.Trim(), vulnerabilidadBuscada, StringComparison.OrdinalIgnoreCase))
+                    {
+                        comboVulnerabilidad.SelectedIndex = i;
+                        break;
+                    }
+                }
+            }
+           
         }
 
         private void btnRegresarMenu_Click(object sender, EventArgs e)
@@ -44,57 +72,7 @@ namespace SIPABE_DIFGRO_FAH
             principalForm.Show();
             this.Dispose();
         }
-
-        /*
-        public void obtenerEstadoCivil()
-        {
-            using (SqlConnection conn = new SqlConnection(LoginForm.CadenaDeConexionGlobal))
-            {
-                String query = "SELECT cve_estado_civil, estado_civil from Cat_Estado_Civil";
-
-                using (SqlCommand cmd = new SqlCommand(query, conn))
-                {
-                    try
-                    {
-                        conn.Open();
-                        using (SqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            comboEstadoCivil.Items.Clear();
-
-                            // Opcional: Agregar un elemento por defecto
-                            comboEstadoCivil.Items.Add("-- Seleccione --");
-
-                            // Recorrer los resultados y agregarlos al ComboBox
-                            while (reader.Read())
-                            {
-                                // Crear un objeto para guardar ambos valores
-                                var item = new
-                                {
-                                    Value = reader["cve_estado_civil"].ToString(),
-                                    Text = reader["estado_civil"].ToString()
-                                };
-
-                                // Agregar al ComboBox
-                                comboEstadoCivil.Items.Add(item);
-                            }
-
-                            // Configurar DisplayMember y ValueMember
-                            comboEstadoCivil.DisplayMember = "Text";
-                            comboEstadoCivil.ValueMember = "Value";
-
-                            // Seleccionar el primer elemento (el de "-- Seleccione --")
-                            if (comboEstadoCivil.Items.Count > 0)
-                            {
-                                comboEstadoCivil.SelectedIndex = 0;
-                            }
-                        }
-                    }
-                    catch (Exception ex) { }
-                }
-            }
-        }
-        */
-    
+            
         public void obtenerEstadoCivil()
         {
             using (SqlConnection conn = new SqlConnection(LoginForm.CadenaDeConexionGlobal))
